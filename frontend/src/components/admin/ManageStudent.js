@@ -1,13 +1,76 @@
-import React from 'react'
-import { MDBInput, MDBTextArea } from 'mdb-react-ui-kit';
+import React from "react";
+import { MDBInput, MDBTextArea } from "mdb-react-ui-kit";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+const StudentSchema = Yup.object().shape({
+  firstName: Yup.string()
+  .required("Required"),
+  lastName: Yup.string()
+  .required("Required"),
+  motherName: Yup.string()
+  .required("Required"),
+  fatherName: Yup.string()
+  .required("Required"),
+  address: Yup.string()
+  .required("Required"),
+  femaleGender: Yup.string()
+  .required("Required"),  
+  maleGender: Yup.string()
+  .required("Required"),
+  otherGender: Yup.string()
+  .required("Required"),
+  
+  email: Yup.string()
+  .required("Required"),
+  college: Yup.string()
+  .required("Required"),
+  pincode: Yup.string()
+  .required("Required"),
+  dob: Yup.string()
+  .required("Required"),
+  course: Yup.string()
+  .required("Required"),
+});
 
 const ManageStudent = () => {
+  const studentForm = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      motherName: "",
+      fatherName: "",
+      address: "",
+      femaleGender: "",
+      maleGender: "",
+      otherGender: "",
+      email: "",
+      college: "",
+      pincode: "",
+      dob: "",
+      course: "",      
+    },
+    onSubmit: async (values, { setSubmitting }) => {
+      console.log(values);
+      const response = await fetch("http://localhost:5000/student/add", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "content-type": "application/json",
+        },
+        validationSchema: StudentSchema,
+      });
+
+      console.log(response.status);
+    }
+  });
   return (
     <section className="h-100 bg-dark">
   <div className="container py-5 h-100">
     <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col">
         <div className="card card-registration my-4">
+          <form onSubmit={studentForm.handleSubmit}>
           <div className="row g-0">
             <div className="col-xl-6 d-none d-xl-block">
               <img
@@ -28,43 +91,53 @@ const ManageStudent = () => {
                 <div className="row">
                   <div className="col-md-6 mb-4">
                     <div className=" ">
-                    <MDBInput label='First Name' type='text' className='form-control' id='fname'/>
+                    <MDBInput label='First Name' type='text' className='form-control' id='firstName' value={studentForm.values.firstName}
+                      onChange={studentForm.handleChange}/>
                     </div>
                   </div>
                   <div className="col-md-6 mb-4">
                     <div className=" ">
-                      <MDBInput label='Last Name' type='text' className='form-control' id='lname'/>
+                      <MDBInput label='Last Name' type='text' className='form-control' id='lastName'value={studentForm.values.lastName}
+                      onChange={studentForm.handleChange}/>
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-6 mb-4">
                     <div className=" ">
-                      <MDBInput label="Mother's Name" type='text' className='form-control' id='mname'/>
+                      <MDBInput label="Mother's Name" type='text' className='form-control' id='motherName'value={studentForm.values.motherName}
+                      onChange={studentForm.handleChange}/>
                     </div>
                   </div>
                   <div className="col-md-6 mb-4">
                     <div className=" ">
-                      <MDBInput label="Father's name" type='text' className='form-control' id='fname'/>
+                      <MDBInput label="Father's name" type='text' className='form-control' id='fatherName'value={studentForm.values.fatherName}
+                      onChange={studentForm.handleChange}/>
                     </div>
                   </div>
                 </div>
                 <div className="  mb-4">
-                  <MDBTextArea label='Address' id='address' rows={2} />
+                  <MDBTextArea label='Address' id='address' rows={2} value={studentForm.values.address}
+                      onChange={studentForm.handleChange}/>
                 </div>
-                <div className="d-md-flex justify-content-start align-items-center mb-4 py-2">
+                <div className="d-md-flex justify-content-between align-items-center mb-4 py-2">
                   <h6 className="mb-0 me-4">Gender: </h6>
-                  <div className="form-check form-check-inline mb-0 me-4">
+
+                  <div className="form-check form-check-inline mb-0 me-4 ">
+
                     <input
                       className="form-check-input"
                       type="radio"
                       name="inlineRadioOptions"
                       id="femaleGender"
                       defaultValue="option1"
+                      value={studentForm.values.femaleGender}
+                      onChange={studentForm.handleChange}
                     />
                     <label className="form-check-label" htmlFor="femaleGender">
                       Female
                     </label>
+
                   </div>
                   <div className="form-check form-check-inline mb-0 me-4">
                     <input
@@ -73,10 +146,13 @@ const ManageStudent = () => {
                       name="inlineRadioOptions"
                       id="maleGender"
                       defaultValue="option2"
+                      value={studentForm.values.maleGender}
+                      onChange={studentForm.handleChange}
                     />
                     <label className="form-check-label" htmlFor="maleGender">
                       Male
                     </label>
+
                   </div>
                   <div className="form-check form-check-inline mb-0">
                     <input
@@ -85,65 +161,57 @@ const ManageStudent = () => {
                       name="inlineRadioOptions"
                       id="otherGender"
                       defaultValue="option3"
+                      value={studentForm.values.otherGender}
+                      onChange={studentForm.handleChange}
                     />
                     <label className="form-check-label" htmlFor="otherGender">
                       Other
                     </label>
                   </div>
+                  <div className="mb-4">
+                      <MDBInput label="Contact" type='text' className='form-control' id='contact' value={studentForm.values.contact}
+                      onChange={studentForm.handleChange}/>
+                    </div>
                 </div>
-                <div className="row">
-                  <div className="col-md-6 mb-4">
-                    <select className="select">
-                      <option value={1}>State</option>
-                      <option value={2}>Option 1</option>
-                      <option value={3}>Option 2</option>
-                      <option value={4}>Option 3</option>
-                    </select>
-                  </div>
-                  <div className="col-md-6 mb-4">
-                    <select className="select">
-                      <option value={1}>City</option>
-                      <option value={2}>Option 1</option>
-                      <option value={3}>Option 2</option>
-                      <option value={4}>Option 3</option>
-                    </select>
-                  </div>
-                </div>
+                
                 <div className="  mb-4">
-                  <MDBInput label='Course' type='email' className='form-control' id='course'/>
+                  <MDBInput label='Course' type='text' className='form-control' id='course' value={studentForm.values.course}
+                      onChange={studentForm.handleChange}/>
                 </div>
 
                 <div className="  mb-4">
-                  <MDBInput label='College or University' type='email' className='form-control' id='college'/>
+                  <MDBInput label='College or University' type='text' className='form-control' id='college' value={studentForm.values.college}
+                      onChange={studentForm.handleChange}/>
                 </div>
 
                 <div className="  mb-4">
-                  <MDBInput label='DOB' type='text' className='form-control' id='dob'/>
+                  <MDBInput label='DOB' type='text' className='form-control' id='dob' value={studentForm.values.dob}
+                      onChange={studentForm.handleChange}/>
                 </div>
 
                 <div className="  mb-4">
-                  <MDBInput label='Pincode' type='number' className='form-control' id='pincode'/>
+                  <MDBInput label='Pincode' type='text' className='form-control' id='pincode'value={studentForm.values.pincode}
+                      onChange={studentForm.handleChange}/>
                 </div>
 
-                <div className="  mb-4">
-                  <MDBInput label='Course' type='text' className='form-control' id='course'/>
-                </div>
 
                 <div className="  mb-4">
-                  <MDBInput label='Email ID' type='email' className='form-control' id='mail'/>
+                  <MDBInput label='Email ID' type='email' className='form-control' id='email'value={studentForm.values.email}
+                      onChange={studentForm.handleChange}/>
                 </div>
                 
                 <div className="d-flex justify-content-end pt-3">
-                  <button type="button" className="btn btn-light btn-lg">
+                  <button type="reset" className="btn btn-light btn-lg">
                     Reset all
                   </button>
-                  <button type="button" className="btn btn-warning btn-lg ms-2">
+                  <button type="submit" className="btn btn-warning btn-lg ms-2">
                     Submit form
                   </button>
                 </div>
               </div>
             </div>
           </div>
+        </form>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Navbar from './Navbar'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Navbar from './Navbar';
 
-const  Main2 = () => {
+const  Admin = () => {
   return (
     <div>
       <h1>This is admin Page</h1>
@@ -12,4 +12,4 @@ const  Main2 = () => {
   )
 }
 
-export default  Main2
+export default  Admin

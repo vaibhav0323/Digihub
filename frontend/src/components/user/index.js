@@ -2,7 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar'
 
-const  Main3 = () => {
+const  User = () => {
   return (
     <div>
       <h1>This is a user index page.</h1>
@@ -12,4 +12,4 @@ const  Main3 = () => {
   )
 }
 
-export default  Main3
+export default  User

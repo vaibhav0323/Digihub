@@ -1,5 +1,5 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -24,7 +24,7 @@ const Navbar = () => {
       {/* Collapsible wrapper */}
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         {/* Navbar brand */}
-        <NavLink className="navbar-brand mt-2 mt-lg-0" to="/main2">
+        <NavLink className="navbar-brand mt-2 mt-lg-0" to="/admin">
         
         <img
         src='/images/sign2.png' height={40} alt="Logo"
@@ -34,30 +34,41 @@ const Navbar = () => {
         {/* Left links */}
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/main2/admin dashboard">
+            <NavLink className="nav-link active" to="/admin/admin dashboard">
               Home
             </NavLink>
           </li>
 
           
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/main2/admin profile">
+            <NavLink className="nav-link active" to="/admin/admin profile">
               Admin profile
             </NavLink>
            </li> 
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/main2/manage student">
+            <NavLink className="nav-link active" to="/admin/manage student">
               Manage Students
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/main2/issue badges">
+            <NavLink className="nav-link active" to="/admin/issue badges">
               Issue Badges
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/main2/manage badges">
+            <NavLink className="nav-link active" to="/admin/manage badges">
               Manage Badges
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link active" to="/admin/badge data">
+              Badge Data
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink className="nav-link active" to="/admin/student data">
+              Student Data
             </NavLink>
           </li>
           

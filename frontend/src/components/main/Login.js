@@ -1,6 +1,35 @@
-import React from 'react'
+import React from "react";
+import { MDBInput, MDBTextArea } from "mdb-react-ui-kit";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+const loginSchema = Yup.object().shape({
+  email: Yup.string()
+  .required("Please enter your email"),
+  password: Yup.string()
+  .required("Please enter your password"),
+});
 
 const Login = () => {
+  const loginForm = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: async (values, { setSubmitting }) => {
+      console.log(values);
+      const response = await fetch("http://localhost:5000/login/add", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "content-type": "application/json",
+        },
+        validationSchema: loginSchema,
+      });
+
+      console.log(response.status);
+    }
+  });
   return (
     <section >
   <div className="container-fluid h-custom ">
@@ -13,7 +42,7 @@ const Login = () => {
         />
       </div>
       <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1" >
-        <form>
+        <form onSubmit={loginForm.handleSubmit}>
           <div className="d-flex flex-column align-items-center justify-content-center justify-content-lg-start">
             <p className="lead fw-normal mb-3 me-0" style={{color:"black"}}>Sign in with</p>
 
@@ -34,24 +63,27 @@ const Login = () => {
           </div>
           
           {/* Email input */}
-          <div className="   mb-4">
-            <input
-              type="email"
-              id="form3Example3"
-              className="form-control form-control-lg"
-              placeholder="Enter a valid email address"
-            />
+          <div className="mb-4">
+                    <MDBInput
+                      label="Email"
+                      type="email"
+                      className="form-control"
+                      id="email"
+                      value={loginForm.values.email}
+                      onChange={loginForm.handleChange}
+                    />
             
           </div>
           {/* Password input */}
-          <div className="   mb-3">
-            <input
-              type="password"
-              id="form3Example4"
-              className="form-control form-control-lg"
-              placeholder="Enter password"
-            />
-            
+          <div className="mb-3">
+          <MDBInput
+                      label="Password"
+                      type="password"
+                      className="form-control"
+                      id="password"
+                      value={loginForm.values.password}
+                      onChange={loginForm.handleChange}
+                    />
           </div>
           <div className="d-flex justify-content-between align-items-center">
             {/* Checkbox */}
@@ -72,7 +104,7 @@ const Login = () => {
           </div>
           <div className="text-center text-lg-start mt-4 pt-2">
             <button
-              type="button"
+              type="submit"
               className="btn btn-primary btn-lg"
               style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
             >

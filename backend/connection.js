@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const url = 'mongodb+srv://mmm:mmm@cluster0.gvyon.mongodb.net/mern9302023?retryWrites=true&w=majority';
+const url = 'mongodb+srv://vaibhav:1234@cluster0.dm3lexb.mongodb.net/digihub?retryWrites=true&w=majority';
 
 mongoose.connect(url)
 .then((result) => {

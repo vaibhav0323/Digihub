@@ -60,6 +60,16 @@ const Navbar = () => {
               Badge Details
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link active" to="/main/signUp data">
+              SignUp Data
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link active" to="/main/login data">
+              Login Data
+            </NavLink>
+          </li>
           <hr/>
         </ul>
         {/* Left links */}
