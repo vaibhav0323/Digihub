@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import IssueBadges from "./IssueBadges";
 
 const StudentData = () => {
   const [studentList, setStudentList] = useState([]);
+  const [selStudent, setSelStudent] = useState(null);
 
   const fetchUserData = async () => {
     const res = await fetch("http://localhost:5000/student/getall");
@@ -41,7 +43,11 @@ const StudentData = () => {
             aria-label="Close"
           />
         </div>
-        <div className="modal-body">...</div>
+        <div className="modal-body">{
+          selStudent !==null && (
+            <IssueBadges studentData={selStudent} />
+            )
+        }</div>
         <div className="modal-footer">
           <button
             type="button"
@@ -101,6 +107,7 @@ const StudentData = () => {
     className="btn btn-primary"
     data-mdb-toggle="modal"
     data-mdb-target="#exampleModal"
+    onClick={e => setSelStudent(student)``}
   >
     Issue Badge
   </button>

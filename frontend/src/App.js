@@ -22,6 +22,7 @@ import Main from "./components/main";
 import BadgeData from "./components/admin/BadgeData";
 import StudentData from "./components/admin/StudenData";
 import UserData from "./components/main/UserData";
+import AdminAuth from "./auth/AdminAuth";
 
 function App() {
   return (
@@ -55,15 +56,15 @@ function App() {
         </div>
       </nav>
         <Routes>
-          <Route path="admin" element={<Admin />}>
+          <Route path="admin" element={<AdminAuth> <Admin /> </AdminAuth>}>
 
             <Route path="admin profile" element={<AdminProfile />} />
             <Route path="manage student" element={<ManageStudent />} />
-            <Route path="admin dashboard" element={<AdminDashboard />} />
+            <Route path="adminashboard" element={<AdminDashboard />} />
             <Route path="manage badges" element={<ManageBadges />} />
             <Route path="issue badges" element={<IssueBadges />} />
             <Route path="badge data" element={<BadgeData />} />
-            <Route path="student data" element={<StudentData />} />
+            <Route path="studentdata" element={<StudentData />} />
           </Route>
 
           <Route path="main" element={<Main />}>

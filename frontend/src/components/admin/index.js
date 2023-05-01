@@ -5,7 +5,6 @@ import Navbar from './Navbar';
 const  Admin = () => {
   return (
     <div>
-      <h1>This is admin Page</h1>
       <Navbar/>
       <Outlet />
     </div>

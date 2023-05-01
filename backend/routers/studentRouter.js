@@ -32,7 +32,27 @@ router.post('/authenticate', (req, res) => {
 })
 
 router.get('/getall',(req,res) => {
-    Model.find({})
+    Model.find({}).populate('badges')
+    .then((result) => {
+        res.json(result)
+    }).catch((err) => {
+        console.error(err);
+        res.status(500).json(err);
+    });
+})
+
+router.put('/update/:id',(req,res) => {
+    Model.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    .then((result) => {
+        res.json(result)
+    }).catch((err) => {
+        console.error(err);
+        res.status(500).json(err);
+    });
+})
+
+router.put('/addBadge/:id',(req,res) => {
+    Model.findByIdAndUpdate(req.params.id,{$push : req.body},{new:true})
     .then((result) => {
         res.json(result)
     }).catch((err) => {

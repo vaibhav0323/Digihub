@@ -3,6 +3,7 @@ import { MDBInput, MDBTextArea } from "mdb-react-ui-kit";
 import { useFormik } from "formik";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -12,6 +13,9 @@ const loginSchema = Yup.object().shape({
 });
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
   const loginForm = useFormik({
     initialValues: {
       email: "",
@@ -35,6 +39,15 @@ const Login = () => {
         Swal.fire({
           icon:'success', title :'Nice', text : 'You have succesfully Logged In'
         })
+
+        const data = await res.json();
+        if(data.role === 'user'){
+          sessionStorage.setItem('user', JSON.stringify(data));
+          navigate('/user/profile');
+        }else{
+          sessionStorage.setItem('admin', JSON.stringify(data));
+          navigate('/admin/adminashboard');
+        }
       }
       else{
         Swal.fire({
