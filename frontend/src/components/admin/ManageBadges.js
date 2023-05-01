@@ -16,6 +16,22 @@ const BadgeSchema = Yup.object().shape({
   .required("Required"),
 });
 
+const uploadImage = async (e) => {
+  const file = e.target.files[0];
+
+  const fd = new FormData();
+  fd.append("myfile", file);
+  fetch(apiUrl + "/util/uploadfile", {
+    method: "POST",
+    body: fd,
+  }).then((res) => {
+    if (res.status === 200) {
+      console.log("file uploaded");
+      toast.success("File Uploaded!!");
+    }
+  });
+}
+
 const ManageBadges = () => {
   const badgeForm = useFormik({
     initialValues: {
