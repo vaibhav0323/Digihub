@@ -23,10 +23,12 @@ import BadgeData from "./components/admin/BadgeData";
 import StudentData from "./components/admin/StudenData";
 import UserData from "./components/main/UserData";
 import AdminAuth from "./auth/AdminAuth";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
       <BrowserRouter> 
+      <Toaster position="top-right" />
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarNav">
