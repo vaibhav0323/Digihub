@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const Model = require('../models/signUpModel');
+const Model = require('../models/userModel');
 
 router.post('/add', (req, res) => { 
 

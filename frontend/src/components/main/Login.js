@@ -1,6 +1,7 @@
 import React from "react";
 import { MDBInput, MDBTextArea } from "mdb-react-ui-kit";
 import { useFormik } from "formik";
+import Swal from "sweetalert2";
 import * as Yup from "yup";
 
 const loginSchema = Yup.object().shape({
@@ -18,7 +19,7 @@ const Login = () => {
     },
     onSubmit: async (values, { setSubmitting }) => {
       console.log(values);
-      const response = await fetch("http://localhost:5000/login/add", {
+      const res = await fetch("http://localhost:5000/user/authenticate", {
         method: "POST",
         body: JSON.stringify(values),
         headers: {
@@ -27,7 +28,20 @@ const Login = () => {
         validationSchema: loginSchema,
       });
 
-      console.log(response.status);
+      console.log(res.status);
+
+      if(res.status === 200)
+      {
+        Swal.fire({
+          icon:'success', title :'Nice', text : 'You have succesfully Logged In'
+        })
+      }
+      else{
+        Swal.fire({
+          icon:'error', title :'Oops!', text : 'something went wrong'
+        })
+      }
+      
     }
   });
   return (

@@ -21,8 +21,7 @@ import User from "./components/user";
 import Main from "./components/main";
 import BadgeData from "./components/admin/BadgeData";
 import StudentData from "./components/admin/StudenData";
-import SignUpData from "./components/main/SignUpData";
-import LoginData from "./components/main/LoginData";
+import UserData from "./components/main/UserData";
 
 function App() {
   return (
@@ -73,8 +72,7 @@ function App() {
             <Route path="signup" element={<SignUp />} />
             <Route path="browse badges" element={<BrowseBadges />} />
             <Route path="badge details" element={<BadgeDetails />} />
-            <Route path="signUp Data" element={<SignUpData />} />
-            <Route path="Login Data" element={<LoginData />} />
+            <Route path="UserData" element={<UserData />} />
           </Route>
 
           <Route path="user" element={<User />}>

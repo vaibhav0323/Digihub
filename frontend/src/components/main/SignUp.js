@@ -2,6 +2,7 @@ import { MDBInput } from "mdb-react-ui-kit";
 import { useFormik } from "formik";
 import React from "react";
 import * as Yup from "yup";
+import Swal from "sweetalert2";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -32,16 +33,15 @@ const SignupSchema = Yup.object().shape({
 const SignUp = () => {
   const signupForm = useFormik({
     initialValues: {
-      name: "vaav",
+      name: "",
       email: "",
       phone: "",
-      role:"",
       password: "",
       cPassword: "",
     },
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
       console.log(values);
-      const response = await fetch("http://localhost:5000/signUp/add", {
+      const response = await fetch("http://localhost:5000/user/add", {
         method: "POST",
         body: JSON.stringify(values),
         headers: {
@@ -50,6 +50,14 @@ const SignUp = () => {
       });
 
       console.log(response.status);
+      if (response.status === 200) {
+        resetForm();
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "User Added Successfully!!",
+        })
+      }
     },
   });
   return (
@@ -118,21 +126,7 @@ const SignUp = () => {
                         </div>
                       </div>
 
-                      <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-lock fa-lg me-3 mb-4 fa-fw" />
-                        <div className="flex-fill mb-0 ">
-                          {/* Role */}
-
-                          <MDBInput
-                            label="Role"
-                            className="form-control"
-                            type="text"
-                            id="role"
-                            value={signupForm.values.role}
-                            onChange={signupForm.handleChange}
-                          />
-                        </div>
-                      </div>
+                     
 
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-lock fa-lg me-3 mb-4 fa-fw" />

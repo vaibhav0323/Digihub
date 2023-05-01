@@ -21,7 +21,7 @@ const BadgeData = () => {
     
     return (
         <div className='tab'>
-          <p className='display-4 text-center'> Manage user data</p>
+          <p className='display-4 text-center'> Manage Badge Data</p>
           <hr/>
           <table className='table'>
             <thead>
