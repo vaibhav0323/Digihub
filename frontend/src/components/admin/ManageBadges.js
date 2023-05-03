@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { MDBInput, MDBTextArea } from "mdb-react-ui-kit";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import app_config from "../../config";
-import { toast } from "react-hot-toast";
 
 const BadgeSchema = Yup.object().shape({
   title: Yup.string()
@@ -18,30 +16,24 @@ const BadgeSchema = Yup.object().shape({
   .required("Required"),
 });
 
+const uploadImage = async (e) => {
+  const file = e.target.files[0];
 
+  const fd = new FormData();
+  fd.append("myfile", file);
+  fetch(apiUrl + "/util/uploadfile", {
+    method: "POST",
+    
+    body: fd,
+  }).then((res) => {
+    if (res.status === 200) {
+      console.log("file uploaded");
+      toast.success("File Uploaded!!");
+    }
+  });
+}
 
 const ManageBadges = () => {
-
-  const [selImage, setSelImage] = useState('');
-
-  const {apiUrl} = app_config;
-
-  const uploadImage = async (e) => {
-    const file = e.target.files[0];
-    setSelImage(file);
-    const fd = new FormData();
-    fd.append("myfile", file);
-    fetch(apiUrl + "/util/uploadfile", {
-      method: "POST",
-      body: fd,
-    }).then((res) => {
-      if (res.status === 200) {
-        console.log("file uploaded");
-        toast.success("File Uploaded!!");
-      }
-    });
-  }
-
   const badgeForm = useFormik({
     initialValues: {
       title: "",
@@ -50,10 +42,8 @@ const ManageBadges = () => {
       createdAt: "",
       icon: "",
     },
-    
     onSubmit: async (values, { setSubmitting }) => {
       console.log(values);
-      values.icon = selImage.name;
       const response = await fetch("http://localhost:5000/badge/add", {
         method: "POST",
         body: JSON.stringify(values),
@@ -120,8 +110,16 @@ const ManageBadges = () => {
                     />
                   </div>
 
-                  
-                  <input type="file" onChange={uploadImage} />
+                  <div className="mb-4 createdAtpicker">
+                    <MDBInput
+                      label="Created At"
+                      type="date"
+                      className="form-control"
+                      id="createdAt"
+                      value={badgeForm.values.createdAt}
+                      onChange={badgeForm.handleChange}
+                    />
+                  </div>
 
                   <div className="mb-4">
                     <MDBInput
