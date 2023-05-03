@@ -54,6 +54,7 @@ router.put('/update/:id',(req,res) => {
 router.put('/addBadge/:id',(req,res) => {
     Model.findByIdAndUpdate(req.params.id,{$push : req.body},{new:true})
     .then((result) => {
+        console.log(result);
         res.json(result)
     }).catch((err) => {
         console.error(err);

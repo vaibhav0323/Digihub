@@ -41,9 +41,7 @@ const ManageStudent = () => {
       motherName: "",
       fatherName: "",
       address: "",
-      femaleGender: "",
-      maleGender: "",
-      otherGender: "",
+      gender: "male",
       email: "",
       college: "",
       pincode: "",
@@ -52,6 +50,7 @@ const ManageStudent = () => {
     },
     onSubmit: async (values, { setSubmitting }) => {
       console.log(values);
+      return;
       const response = await fetch("http://localhost:5000/student/add", {
         method: "POST",
         body: JSON.stringify(values),
@@ -124,49 +123,32 @@ const ManageStudent = () => {
                   <h6 className="mb-0 me-4">Gender: </h6>
 
                   <div className="form-check form-check-inline mb-0 me-4 ">
-
+                    <div role="group">
                     <input
                       className="form-check-input"
                       type="radio"
-                      name="inlineRadioOptions"
-                      id="femaleGender"
-                      defaultValue="option1"
-                      value={studentForm.values.femaleGender}
-                      onChange={studentForm.handleChange}
+                      name="gender"
                     />
-                    <label className="form-check-label" htmlFor="femaleGender">
+                     <label className="form-check-label" htmlFor="femaleGender">
                       Female
                     </label>
 
-                  </div>
-                  <div className="form-check form-check-inline mb-0 me-4">
                     <input
                       className="form-check-input"
                       type="radio"
-                      name="inlineRadioOptions"
-                      id="maleGender"
-                      defaultValue="option2"
-                      value={studentForm.values.maleGender}
-                      onChange={studentForm.handleChange}
+                      name="gender"
                     />
                     <label className="form-check-label" htmlFor="maleGender">
                       Male
                     </label>
 
+                    </div>
+                   
+                   
+
                   </div>
-                  <div className="form-check form-check-inline mb-0">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="otherGender"
-                      defaultValue="option3"
-                      value={studentForm.values.otherGender}
-                      onChange={studentForm.handleChange}
-                    />
-                    <label className="form-check-label" htmlFor="otherGender">
-                      Other
-                    </label>
+                  <div className="form-check form-check-inline mb-0 me-4">
+                   
                   </div>
                   <div className="mb-4">
                       <MDBInput label="Contact" type='text' className='form-control' id='contact' value={studentForm.values.contact}

@@ -1,6 +1,6 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Navigate, Route, Routes } from "react-router-dom";
 import React from 'react';
 
 import Home from "./components/main/Home";
@@ -24,6 +24,7 @@ import StudentData from "./components/admin/StudenData";
 import UserData from "./components/main/UserData";
 import AdminAuth from "./auth/AdminAuth";
 import { Toaster } from "react-hot-toast";
+import DisplayStudentBadges from "./components/user/DisplayStudentBadges";
 
 function App() {
   return (
@@ -58,29 +59,31 @@ function App() {
         </div>
       </nav>
         <Routes>
+          <Route path="/" element={<Navigate to="/main/home" />} />
           <Route path="admin" element={<AdminAuth> <Admin /> </AdminAuth>}>
 
-            <Route path="admin profile" element={<AdminProfile />} />
-            <Route path="manage student" element={<ManageStudent />} />
-            <Route path="adminashboard" element={<AdminDashboard />} />
-            <Route path="manage badges" element={<ManageBadges />} />
-            <Route path="issue badges" element={<IssueBadges />} />
-            <Route path="badge data" element={<BadgeData />} />
-            <Route path="studentdata" element={<StudentData />} />
+            <Route path="adminProfile" element={<AdminProfile />} />
+            <Route path="manageStudent" element={<ManageStudent />} />
+            <Route path="adminDashboard" element={<AdminDashboard />} />
+            <Route path="manageBadges" element={<ManageBadges />} />
+            <Route path="issueBadges" element={<IssueBadges />} />
+            <Route path="badgeData" element={<BadgeData />} />
+            <Route path="studentData" element={<StudentData />} />
           </Route>
 
           <Route path="main" element={<Main />}>
             <Route path="home" element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
-            <Route path="browse badges" element={<BrowseBadges />} />
-            <Route path="badge details" element={<BadgeDetails />} />
+            <Route path="browseBadges" element={<BrowseBadges />} />
+            <Route path="badgeDetails" element={<BadgeDetails />} />
             <Route path="UserData" element={<UserData />} />
           </Route>
 
           <Route path="user" element={<User />}>
-            <Route path="user profile" element={<UserProfile />} />
-            <Route path="new badge" element={<NewBadge />} />
+            <Route path="userProfile" element={<UserProfile />} />
+            <Route path="newBadge" element={<NewBadge />} />
+            <Route path="displayStudentBadges" element={<DisplayStudentBadges />} />
           </Route>
         </Routes>
         <Footer />

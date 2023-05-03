@@ -18,7 +18,7 @@ const IssueBadges = ({ studentData }) => {
   }, []);
 
   const updateStudentData = async (badgeId) => {
-    const res = await fetch(apiUrl+"/user/addBadge", {
+    const res = await fetch(apiUrl+"/student/addBadge/"+studentData._id, {
       method: "PUT",
       body: JSON.stringify({badges : badgeId}),
       headers: {
@@ -45,9 +45,9 @@ const IssueBadges = ({ studentData }) => {
           <div className="card-body">
             <h5 className="card-title">{badge.badgeName}</h5>
             <p className="card-text">{badge.badgeDescription}</p>
-            <a href="#" className="btn btn-primary">
+            <button onClick={e => updateStudentData(badge._id)} className="btn btn-primary">
               Issue Badge 
-            </a>
+            </button>
           </div>
         </div>
       );

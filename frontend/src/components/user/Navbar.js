@@ -38,16 +38,20 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/user/user profile">
+            <NavLink className="nav-link active" to="/user/userProfile">
               User profile
             </NavLink>
            </li> 
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/user/new badge">
+            <NavLink className="nav-link active" to="/user/newBadge">
               New Badges
             </NavLink>
           </li>
-          
+          <li className="nav-item">
+            <NavLink className="nav-link active" to="/user/displayStudentBadges">
+            Display Student Badges
+            </NavLink>
+          </li>
           
         </ul>
         {/* Left links */}

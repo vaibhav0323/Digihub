@@ -34,40 +34,40 @@ const Navbar = () => {
         {/* Left links */}
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/admin/admin dashboard">
+            <NavLink className="nav-link active" to="/admin/adminDashboard">
               Home
             </NavLink>
           </li>
 
           
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/admin/admin profile">
+            <NavLink className="nav-link active" to="/admin/adminProfile">
               Admin profile
             </NavLink>
            </li> 
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/admin/manage student">
+            <NavLink className="nav-link active" to="/admin/manageStudent">
               Manage Students
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/admin/issue badges">
+            <NavLink className="nav-link active" to="/admin/issueBadges">
               Issue Badges
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/admin/manage badges">
+            <NavLink className="nav-link active" to="/admin/manageBadges">
               Manage Badges
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/admin/badge data">
+            <NavLink className="nav-link active" to="/admin/badgeData">
               Badge Data
             </NavLink>
           </li>
 
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/admin/student data">
+            <NavLink className="nav-link active" to="/admin/studentData">
               Student Data
             </NavLink>
           </li>

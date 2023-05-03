@@ -51,12 +51,12 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/main/browse badges">
+            <NavLink className="nav-link active" to="/main/browseBadges">
               Browse Badges
             </NavLink>
            </li> 
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/main/badge details">
+            <NavLink className="nav-link active" to="/main/badgeDetails">
               Badge Details
             </NavLink>
           </li>

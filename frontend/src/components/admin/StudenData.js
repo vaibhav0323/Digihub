@@ -107,7 +107,7 @@ const StudentData = () => {
     className="btn btn-primary"
     data-mdb-toggle="modal"
     data-mdb-target="#exampleModal"
-    onClick={e => setSelStudent(student)``}
+    onClick={e => setSelStudent(student)}
   >
     Issue Badge
   </button>
