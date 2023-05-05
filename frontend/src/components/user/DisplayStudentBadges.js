@@ -28,6 +28,30 @@ const DisplayStudentBadges = () => {
         console.log(data);
         setStudentDetails(data);
     }
+
+    const displayStudentDetails = () => {
+      if(studentDetails !== null){
+        return (
+          <>
+          <div className="row">
+            <div className="col-md-6">
+              <h3>Student Details</h3>
+              <p>First Name: {studentDetails.firstName}</p>
+              <p>Last Name: {studentDetails.lastName}</p>
+              <p>Student ID: {studentDetails._id}</p>
+            </div>
+            <div className="col-md-6">
+              <h3>Student Badges</h3>
+              {/* <p>Badges: {studentDetails.badges}</p> */}
+            </div>
+          </div>
+          </>
+        )
+      }else{
+        <h1>Student Not Found</h1>
+      }
+    }
+
       
   return (
     <>
@@ -127,8 +151,9 @@ const DisplayStudentBadges = () => {
         </div>
       </div>
     </div>
+
   </section>
-  {/* Section: Design Block */}
+  {displayStudentDetails()}
 </>
   )
 }

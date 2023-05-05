@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import app_config from "../../config";
 
 const BadgeDetails = () => {
+
+  const [badgeData, setBadgeData] = useState(null);
+
+  const {id} = useParams();
+  const {apiUrl} = app_config;
+
+  const getBadgeById = async () => {
+    const response = await fetch(apiUrl+`/badge/${id}`);
+    const data = await response.json();
+    setBadgeData(data);
+  }
+
+
   return (
     <div>
       <h1>You can see details of badges here</h1>

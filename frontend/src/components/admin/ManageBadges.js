@@ -2,6 +2,10 @@ import React from "react";
 import { MDBInput, MDBTextArea } from "mdb-react-ui-kit";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import app_config from "../../config";
+import { toast } from "react-hot-toast";
+
+const {apiUrl} = app_config;
 
 const BadgeSchema = Yup.object().shape({
   title: Yup.string()
