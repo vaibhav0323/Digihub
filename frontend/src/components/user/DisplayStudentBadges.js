@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { MDBInput, } from "mdb-react-ui-kit";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import app_config from "../../config";
 
 const studentBadgeSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -15,27 +16,18 @@ const studentBadgeSchema = Yup.object().shape({
 
 const DisplayStudentBadges = () => {
 
-    const badgeForm = useFormik({
-        initialValues: {
-          firstName:"",
-            lastName:"",
-            id:"",
-        },
-        
-        onSubmit: async (values, { setSubmitting }) => {
-          console.log(values);
-          const response = await fetch("http://localhost:5000/badge/add", {
-            method: "POST",
-            body: JSON.stringify(values),
-            headers: {
-              "content-type": "application/json",
-            },
-            validationSchema: studentBadgeSchema,
-          });
-    
-          console.log(response.status);
-        }
-      });
+    const [studentDetails, setStudentDetails] = useState(null);
+    const {apiUrl} = app_config;
+
+    const stuId = useRef(null);
+
+
+    const getStudentData = async () => {
+        const response = await fetch(apiUrl + "/student/getbyid/"+stuId.current.value)
+        const data = await response.json();
+        console.log(data);
+        setStudentDetails(data);
+    }
       
   return (
     <>
@@ -112,8 +104,8 @@ const DisplayStudentBadges = () => {
                     <MDBInput
                       label="Student ID"
                       type="text"
+                      ref={stuId}
                       className="form-control"
-                      id="id"
                     //   value={badgeForm.values.course}
                     //   onChange={badgeForm.handleChange}
                     />
@@ -121,7 +113,8 @@ const DisplayStudentBadges = () => {
                   </div>
                 
                 <button
-                  type="submit"
+                  type="button"
+                  onClick={getStudentData}
                   className="btn btn-primary btn-block mb-4"
                 >
                     See Your Badges
