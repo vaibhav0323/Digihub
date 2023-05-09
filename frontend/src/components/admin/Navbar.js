@@ -1,7 +1,24 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import useUserContext from '../../context/UserContext';
 
 const Navbar = () => {
+  const { loggedIn, logout } = useUserContext();
+  console.log(loggedIn);
+  const showLogout = () => {
+    if (loggedIn) {
+      return (
+        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+            <button className="btn btn-danger" onClick={logout}>
+              Logout
+            </button>
+          </li>
+        </ul>
+      );
+    }
+  };
+
   return (
     <div>
         <>
@@ -74,6 +91,7 @@ const Navbar = () => {
           
         </ul>
         {/* Left links */}
+        {showLogout()}
       </div>
       {/* Collapsible wrapper */}
       {/* Right elements */}

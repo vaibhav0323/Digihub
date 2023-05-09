@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import useUserContext from "../../context/UserContext";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -15,6 +16,8 @@ const loginSchema = Yup.object().shape({
 const Login = () => {
 
   const navigate = useNavigate();
+
+  const { setLoggedIn } = useUserContext();
 
   const loginForm = useFormik({
     initialValues: {
@@ -39,7 +42,7 @@ const Login = () => {
         Swal.fire({
           icon:'success', title :'Nice', text : 'You have succesfully Logged In'
         })
-
+        setLoggedIn(true);
         const data = await res.json();
         if(data.role === 'user'){
           sessionStorage.setItem('user', JSON.stringify(data));
