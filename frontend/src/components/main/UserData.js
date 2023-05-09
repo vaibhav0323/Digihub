@@ -12,7 +12,7 @@ const UserData = () => {
         setUserList(data);
     }
 
-
+    
 
     useEffect(() => {
         fetchUserData();
