@@ -46,7 +46,7 @@ const Login = () => {
           navigate('/user/profile');
         }else{
           sessionStorage.setItem('admin', JSON.stringify(data));
-          navigate('/admin/adminashboard');
+          navigate('/admin/BadgeData');
         }
       }
       else{
@@ -58,12 +58,12 @@ const Login = () => {
     }
   });
   return (
-    <section >
-  <div className="container-fluid h-custom ">
-    <div className="row d-flex flex-md-row flex-sm-column justify-content-center align-items-center h-100 mt-lg-5 mb-5" >
+    <section className="gradient-custom" style={{minHeight: '100vh',}}>
+  <div className="container-fluid">
+    <div className="row d-flex flex-md-row flex-sm-column justify-content-center align-items-center pt-lg-5 mb-5" >
       <div className="col-md-9 col-lg-6 col-xl-5">
         <img
-          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          src="/images/baner.png"
           className="img-fluid"
           alt="Sample image"
         />
@@ -71,22 +71,7 @@ const Login = () => {
       <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1" >
         <form onSubmit={loginForm.handleSubmit}>
           <div className="d-flex flex-column align-items-center justify-content-center justify-content-lg-start">
-            <p className="lead fw-normal mb-3 me-0" style={{color:"black"}}>Sign in with</p>
-
-            <div className='d-flex flex-row align-items-center justify-content-center'>
-            <button type="button" className="btn btn-primary btn-floating mx-1">
-              <i className="fab fa-facebook-f" />
-            </button>
-            <button type="button" className="btn btn-primary btn-floating mx-1">
-              <i className="fab fa-twitter" />
-            </button>
-            <button type="button" className="btn btn-primary btn-floating mx-1">
-              <i className="fab fa-linkedin-in" />
-            </button>
-            </div>
-            <div className="divider d-flex align-items-center my-4">
-            <p className="text-center fw-bold mx-3 mb-0">Or</p>
-          </div>
+            <p className="lead fw-bold fs-large mb-3 me-0" style={{color:"black",fontSize:"30px"}}>→ Sign In to Digihub ← </p>
           </div>
           
           {/* Email input */}
@@ -94,7 +79,7 @@ const Login = () => {
                     <MDBInput
                       label="Email"
                       type="email"
-                      className="form-control"
+                      className="form-control bg-light"
                       id="email"
                       value={loginForm.values.email}
                       onChange={loginForm.handleChange}
@@ -106,7 +91,7 @@ const Login = () => {
           <MDBInput
                       label="Password"
                       type="password"
-                      className="form-control"
+                      className="form-control bg-light"
                       id="password"
                       value={loginForm.values.password}
                       onChange={loginForm.handleChange}
@@ -139,7 +124,7 @@ const Login = () => {
             </button>
             <p className="small fw-bold mt-2 pt-1 mb-0">
               Don't have an account?{" "}
-              <a href="#!" className="link-danger">
+              <a href="/main/signup" className="link-danger">
                 Register
               </a>
             </p>

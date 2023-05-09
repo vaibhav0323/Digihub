@@ -20,11 +20,10 @@ const UserData = () => {
     }, [])
     
     return (
-        <div className='tab'>
-          <p className='display-4 text-center'> Manage user data</p>
-          <hr/>
-          <table className='table'>
-            <thead>
+        <div className="tab3 p-md-3">
+          <h1 className="container-fluid text-center badgeHeading3"> Manage user data</h1>
+          <table className="table container-fluid badgeTable3 ">
+          <thead className="fs-4 headBlock3">
                 <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -34,7 +33,7 @@ const UserData = () => {
                 <th>Remove</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="bodyBlock3">
                     {
                         userList.map( (user) => 
                         <tr>

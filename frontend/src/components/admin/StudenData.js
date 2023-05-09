@@ -18,7 +18,7 @@ const StudentData = () => {
   }, []);
 
   return (
-    <div className="tab">
+    <div className="tab2 p-md-3">
         <>
   {/* Button trigger modal */}
   
@@ -65,10 +65,10 @@ const StudentData = () => {
   </div>
 </>
 
-      <p className="display-4 text-center"> Manage Student Data</p>
+      <h1 className="container-fluid text-center badgeHeading2"> Manage Student Data</h1>
       <hr />
-      <table className="table">
-        <thead>
+      <table className="table container-fluid badgeTable2 " >
+        <thead className="fs-6 headBlock2">
           <tr>
             <th>ID</th>
             <th>First Name</th>
@@ -86,7 +86,7 @@ const StudentData = () => {
             <th>Remove</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bodyBlock2">
           {studentList.map((student) => (
             <tr>
               <td>{student._id}</td>

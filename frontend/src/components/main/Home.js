@@ -14,8 +14,8 @@ import {
 
 const Home = () => {
   return (
-    <div>
-      <div className="row" style={{ height: "auto" }}>
+    <div className="cs">
+      <div className="row " style={{ height: "auto" }}>
         <MDBCarousel showControls dealy={5}>
           <MDBCarouselItem
             className="d-block img-fluid"

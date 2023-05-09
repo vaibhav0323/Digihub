@@ -68,7 +68,7 @@ const ManageStudent = () => {
   <div className="container py-5 h-100">
     <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col">
-        <div className="card card-registration my-4">
+        <div className="card card-registration my-4 studentForm">
           <form onSubmit={studentForm.handleSubmit}>
           <div className="row g-0">
             <div className="col-xl-6 d-none d-xl-block">

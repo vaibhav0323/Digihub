@@ -31,14 +31,14 @@
 
 .menu
 {
-  background-color: red;
+
   color: black;
   font-size: medium;
   font-weight: 700;
   font-family: 'DynaPuff', cursive;
   font-family: 'Roboto', sans-serif;
+  background-image: linear-gradient( 45.6deg,rgb(255, 255, 255) ,rgb(208, 243, 243) , rgb(191, 244, 241)  );
 }
-
 .lab{
   color: black;
   font-size: medium;
@@ -56,7 +56,7 @@
   outline: none;
   border: none;
 
-  box-shadow: 1px 1px 4px 1px rgb(239, 237, 237),-1px -1px 4px 4px rgb(239, 237, 237);
+  box-shadow: 3px 3px 4px 3px rgb(239, 237, 237),-3px -3px 4px 4px rgb(239, 237, 237);
   transition: 1s;
 }
 
@@ -64,5 +64,240 @@
 {
   transform:scale(1.05);
   z-index: 2;
-  box-shadow: 1px 1px 10px 4px  rgb(207, 199, 199),-1px -1px 10px 4px  rgb(207, 199, 199);
+  box-shadow: 3px 3px 10px 4px  rgb(207, 199, 199),-3px -3px 10px 4px  rgb(207, 199, 199);
 }
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #3773d2;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(55,115,210,0.5), rgba(255,255,255,0.5));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient( 180.6deg, rgb(191, 244, 241) 0.2%,rgb(223, 246, 245) 11.2%, rgb(127, 139, 247) 91.1% );
+}
+
+.mask-custom {
+  backdrop-filter: blur(5px);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.cs
+{ background: linear-gradient( 180.6deg, rgb(191, 244, 241) 0.2%,rgb(223, 246, 245) 11.2%, rgb(127, 139, 247) 91.1% );
+height: auto;
+color: black;
+}
+
+.tab
+{
+height: auto;
+  background-image: url(D:\Digihub\frontend\public\images\tablebg.jpg) ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.badgeTable
+{
+  /* border: 2px solid red; */
+  height: auto;
+  width: 90%;
+  background-color: #fff5;
+  color: white;
+  
+  backdrop-filter: blur(7px);
+  
+}
+
+
+
+.badgeHeading
+{
+  /* border: 2px solid red; */
+  height: 60px;
+  width: 90%;
+  background-color: #fff5;
+  color: black;
+  text-shadow: 2px 2px 4px rgba(41, 254, 254, 0.333);
+  backdrop-filter: blur(7px);
+  
+}
+
+.headBlock
+{
+  color: black;
+  font-weight: bold;
+}
+
+
+.bodyBlock tr {
+  color: black;
+  font-size: 15px;
+  font-weight:600;
+  background: linear-gradient(to right, rgba(131, 150, 187, 0.65), rgba(186,200,224,0.65));
+  transition: 0.8s;
+}
+
+.bodyBlock tr:hover {
+  background: linear-gradient(to right, rgba(94,231,223,0.65), rgba(180,144,202,0.65));
+  box-shadow: 5px 5px 10px 5px rgb(211, 221, 235),-5px -5px 10px 5px rgb(211, 221, 235);
+  transform: scale(1.01);
+}
+
+.tab2
+{
+height: auto;
+  background-image: url(D:\Digihub\frontend\public\images\tablebg.jpg) ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: scroll;
+  height: 100%;
+  width: 100%;
+}
+
+.badgeTable2
+{
+  /* border: 2px solid red; */
+  height: auto;
+  width: 100%;
+  background-color: #fff5;
+  color: white;
+  backdrop-filter: blur(7px);
+  
+}
+
+
+
+.badgeHeading2
+{
+  /* border: 2px solid red; */
+  height: 60px;
+  width: 90%;
+  background-color: #fff5;
+  color: black;
+  text-shadow: 2px 2px 4px rgba(41, 254, 254, 0.333);
+  backdrop-filter: blur(7px);
+  
+  
+}
+
+.headBlock2
+{
+  color: black;
+  font-weight: bold;
+}
+
+
+.bodyBlock2 tr {
+  color: black;
+  font-size: 15px;
+  font-weight:600;
+  background: linear-gradient(to right, rgba(131, 150, 187, 0.65), rgba(186,200,224,0.65));
+  transition: 0.8s;
+}
+
+.bodyBlock2 tr:hover {
+  background: linear-gradient(to right, rgba(94,231,223,0.65), rgba(180,144,202,0.65));
+  box-shadow: 5px 5px 10px 5px rgb(211, 221, 235),-5px -5px 10px 5px rgb(211, 221, 235);
+  transform: scale(1.01);
+}
+
+
+.tab3
+{
+height: auto;
+  background-image: url(D:\Digihub\frontend\public\images\tablebg.jpg) ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: scroll;
+  height: 100%;
+  width: 100%;
+}
+
+.badgeTable3
+{
+  height: auto;
+  width: 100%;
+  background-color: #fff5;
+  color: white;
+  backdrop-filter: blur(7px);
+  
+}
+
+
+
+.badgeHeading3
+{
+  height: 60px;
+  width: 90%;
+  background-color: #fff5;
+  color: black;
+  text-shadow: 2px 2px 4px rgba(41, 254, 254, 0.333);
+  backdrop-filter: blur(7px);
+  
+  
+}
+
+.headBlock3
+{
+  color: black;
+  font-weight: bold;
+}
+
+
+.bodyBlock3 tr {
+  color: black;
+  font-size: 15px;
+  font-weight:600;
+  background: linear-gradient(to right, rgba(131, 150, 187, 0.65), rgba(186,200,224,0.65));
+  transition: 0.8s;
+}
+
+.bodyBlock3 tr:hover {
+  background: linear-gradient(to right, rgba(94,231,223,0.65), rgba(180,144,202,0.65));
+  box-shadow: 5px 5px 10px 5px rgb(211, 221, 235),-5px -5px 10px 5px rgb(211, 221, 235);
+  transform: scale(1.01);
+}
+
+.signUpHead
+{
+  font-family: playfair display;
+  font-size: 30px;
+}
+
+.signMain
+{
+  background-image: url("D:\Digihub\frontend\public\images\signUpBg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.regButton
+{
+  background-image: linear-gradient(to right, #bd97b5, #7bdba3);
+  color: black;
+  font-size: large;
+  font-family: bold;
+}
+
+.signBody
+{
+background-color: #fff5;
+color: black;
+backdrop-filter: blur(20px);
+}
+
+.signUpForm 
+{
+  color: black;
+}
+
+.studentForm
+{
+  background-color: #a5c187;}

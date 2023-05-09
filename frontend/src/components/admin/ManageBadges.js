@@ -61,14 +61,17 @@ const ManageBadges = () => {
     }
   });
   return (
-    <section className="h-100 h-custom" style={{ backgroundColor: "#8fc4b7" }}>
-      <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-lg-8 col-xl-6">
-            <div className="card rounded-3">
+    <section className="h-100 h-custom" style={{backgroundImage:"url('/images/pexel1.jpeg')", backgroundSize:"cover"}}>
+      <div className="" style={{backdropFilter: "blur(5px)",
+  backgroundColor:"rgba(0,0,0,0.4)"}}>
+      <div className="container py-5 h-100 ">
+        <div className="row d-flex justify-content-center align-items-center h-100 ">
+          <div className="col-lg-8 col-xl-6 ">
+            <div className="card rounded-3 " style={{boxShadow:"9px 8px 8px -4px lightblue,-9px -8px 8px -4px lightblue"}}>
               <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                src="/images/bn.jpg"
                 className="w-100"
+                height={160}
                 style={{
                   borderTopLeftRadius: ".3rem",
                   borderTopRightRadius: ".3rem",
@@ -76,11 +79,11 @@ const ManageBadges = () => {
                 alt="Sample photo"
               />
 
-              <div className="card-body p-4 p-md-5">
+              <div className="card-body p-4 p-md-5 ">
                 <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">
-                  Manage Badges
+                  Add Badges
                 </h3>
-                <form className="px-md-2"
+                <form className="px-md-2 bg-light"
                 onSubmit={badgeForm.handleSubmit}
                 >
                   <div className="mb-4">
@@ -144,6 +147,7 @@ const ManageBadges = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

@@ -19,31 +19,31 @@ const BadgeData = () => {
   }, []);
 
   return (
-    <div className="tab">
-      <p className="display-4 text-center"> Manage Badge Data</p>
-      <hr />
-      <table className="table">
-        <thead>
+    <div className="tab p-md-3">
+      
+      <h1 className="container-fluid text-center badgeHeading"> Manage Student Data</h1>
+      <table  className="table container-fluid badgeTable ">
+        <thead className="fs-4 headBlock">
           <tr>
             <th>Icon</th>
             <th>Title</th>
             <th>Course</th>
             <th>Description</th>
-            <th>Icon</th>
             <th>Created At</th>
-            <th></th>
+            <th>Remove</th>
+            <th>View</th>
+            
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bodyBlock">
           {badgeList.map((badge) => (
             <tr>
               <td>
-                <img style={{width: '50px'}} src={apiUrl+'/'+badge.icon} alt="" />
+                <img style={{width: '50px',borderRadius:'50px '}} src={apiUrl+'/'+badge.icon} alt="" />
               </td>
               <td>{badge.title}</td>
               <td>{badge.course}</td>
-              <td>{badge.description}</td>
-              <td>{badge.icon}</td>
+              <td>{badge.description.slice(0, 30)}...</td>
               <td>{new Date(badge.createdAt).toLocaleDateString()}</td>
               <td>
                 <button className="btn btn-danger"><i class="fas fa-trash-alt    "></i></button>

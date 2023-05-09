@@ -61,19 +61,19 @@ const SignUp = () => {
     },
   });
   return (
-    <section className="vh-200" style={{ background: "white" }}>
-      <div className="container h-100">
+    <section className="vh-200 signMain" >
+      <div className="container h-100" >
         <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-lg-12 col-xl-11">
-            <div className="card text-black my-5" style={{ borderRadius: 25 }}>
-              <div className="card-body p-md-5">
+          <div className="col-lg-12 col-xl-11 ">
+            <div className="card text-black my-5  signBody"  >
+              <div className="card-body p-md-5" >
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
                       Sign up
                     </p>
                     <form
-                      className="mx-1 mx-md-4"
+                      className="mx-1 mx-md-4 signUpForm"
                       onSubmit={signupForm.handleSubmit}
                     >
                       <div className="d-flex flex-row align-items-center mb-4">
@@ -177,23 +177,24 @@ const SignUp = () => {
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                         <button
                           type="submit"
-                          className="btn btn-primary btn-lg"
+                          className="btn btn-lg regButton"
                         >
                           Register
                         </button>
                       </div>
                     </form>
                   </div>
+                  
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex d-flex flex-column align-items-center order-1 order-lg-2">
-                    <img
-                      className="mt-5"
-                      src="/images/sign2.png"
-                      height={400}
-                      alt="Logo"
-                    />
-                    <h3>
+                  <h3 className="text-center signUpHead">
                       The Power of Proof: Display Your Credentials Digitally.
                     </h3>
+                    <img
+                      className=""
+                      src="/images/signuu.png"
+                      height={500}
+                      alt="Logo"
+                    />
                   </div>
                 </div>
               </div>

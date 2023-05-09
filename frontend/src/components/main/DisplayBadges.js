@@ -23,13 +23,16 @@ const DisplayBadges = () => {
             </p>
           </div>
           <div className="d-flex align-item-center justify-content-start mt-4">
+            
             <button
-              type="button"
-              class="btn btn-outline-primary w-auto m-1 me-1"
-              data-mdb-ripple-color="dark"
-            >
-              Primary
-            </button>
+  type="button"
+  class="btn btn-outline-primary w-auto m-1 me-1"
+  data-mdb-toggle="popover"
+  title="Popover title"
+  data-mdb-content="And here's some amazing content. It's very engaging. Right?"
+>
+  Click to toggle popover
+</button>
             <button
               type="button"
               class="btn btn-outline-primary w-auto m-1 me-1"

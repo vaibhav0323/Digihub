@@ -6,9 +6,9 @@ const Navbar = () => {
     <div>
         <>
   {/* Navbar */}
-  <nav className="navbar navbar-expand-lg navbar-light bg-light menu">
+  <nav className="navbar navbar-expand-lg navbar-light menu ">
     {/* Container wrapper */}
-    <div className="container-fluid">
+    <div className="container-fluid ">
       {/* Toggle button */}
       <button
         className="navbar-toggler"
