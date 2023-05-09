@@ -7,7 +7,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 
 import Home from "./components/main/Home";
 import Login from "./components/main/Login";
@@ -32,9 +32,12 @@ import AdminAuth from "./auth/AdminAuth";
 import { Toaster } from "react-hot-toast";
 import DisplayStudentBadges from "./components/user/DisplayStudentBadges";
 import DisplayBadges from "./components/main/DisplayBadges";
+import { UserProvider } from "./context/UserContext";
+import { AdminProvider } from "./context/AdminContext";
 
 
 function App() {
+
   return (
     <BrowserRouter>
       <Toaster position="top-right" />
@@ -66,6 +69,8 @@ function App() {
           </div>
         </div>
       </nav>
+      <AdminProvider>
+      <UserProvider>
       <Routes>
         <Route path="/" element={<Navigate to="/main/home" />} />
         <Route
@@ -104,8 +109,9 @@ function App() {
           />
         </Route>
       </Routes>
-      
       <Footer />
+      </UserProvider>
+      </AdminProvider>
     </BrowserRouter>
   );
 }

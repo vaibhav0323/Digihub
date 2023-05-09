@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const UserData = () => {
 
@@ -18,7 +19,26 @@ const UserData = () => {
         fetchUserData();
 
     }, [])
-    
+
+    const deleteUser = async (id) => {
+        console.log(id);
+        const res = await fetch('http://localhost:5000/userData/delete/'+id,
+        {
+            method: 'DELETE',
+        });
+    console.log(res.status);
+    if(res.status === 200)
+    {
+        fetchUserData();
+        // alert("User Deleted Successfully");
+        Swal.fire({
+            icon: 'success',
+            title: 'success',
+            text: 'User Deleted Successfully',
+        })
+    }
+}
+
     return (
         <div className="tab3 p-md-3">
           <h1 className="container-fluid text-center badgeHeading3"> Manage user data</h1>
@@ -43,7 +63,10 @@ const UserData = () => {
                         <td>{user.phone}</td>
                         <td>{user.password}</td>
                         <td>
-                            <button className='btn btn-danger'>Delete</button>
+                            <button className='btn btn-danger'
+                            onClick={() => deleteUser(user._id)}
+                            >
+                                Delete</button>
                         </td>
                     </tr>
                         )
@@ -54,4 +77,4 @@ const UserData = () => {
       )
     }
     
-    export default UserData
+    export default UserData;
