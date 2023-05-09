@@ -1,184 +1,114 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import app_config from "../../config";
 
 const BadgeDetails = () => {
-
   const [badgeData, setBadgeData] = useState(null);
 
-  const {id} = useParams();
-  const {apiUrl} = app_config;
+  const { id } = useParams();
+  const { apiUrl } = app_config;
 
   const getBadgeById = async () => {
-    const response = await fetch(apiUrl+`/badge/${id}`);
+    const response = await fetch(apiUrl + `/badge/getbyid/${id}`);
+    console.log(response.status);
     const data = await response.json();
+    console.log(data);
     setBadgeData(data);
-  }
+  };
 
+  useEffect(() => {
+    getBadgeById();
+  }, []);
+
+  const displayBadgeData = () => {
+    if (badgeData !== null) {
+      return (
+        <div className="row h-auto mt-5 mb-4 me-0">
+          <div className="col-md-4 me-4  d-flex align-item-start justify-content-center ">
+            <img src="/images/badge1.jpg" height={500}></img>
+          </div>
+          <div className="col-md-6">
+            <div className="row">
+              <h1>{badgeData.title}</h1>
+              <h5>
+                <i>issued by Digipodium</i>
+              </h5>
+            </div>
+            <div className="d-flex align-item-center justify-content-start mt-4">
+              <p>
+                {badgeData.description}
+              </p>
+            </div>
+            <div className="d-flex align-item-center justify-content-start mt-4">
+              <button
+                type="button"
+                class="btn btn-outline-primary w-auto m-1 me-1"
+                data-mdb-toggle="popover"
+                title="Popover title"
+                data-mdb-content="And here's some amazing content. It's very engaging. Right?"
+              >
+                Click to toggle popover
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-primary w-auto m-1 me-1"
+                data-mdb-ripple-color="dark"
+              >
+                Primary
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-primary w-auto m-1 me-1"
+                data-mdb-ripple-color="dark"
+              >
+                Primary
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-primary w-auto m-1 me-1"
+                data-mdb-ripple-color="dark"
+              >
+                Primary
+              </button>
+            </div>
+            <div className="d-flex-column align-item-center justify-content-start mt-4">
+              <h4>Skills</h4>
+              <div className="d-flex align-item-center justify-content-start mt-4">
+                <span className="border border-primary fw-medium w-auto m-1 p-2">
+                  ES6
+                </span>
+                <span className="border border-primary fw-medium w-auto m-1 p-2">
+                  paython and java
+                </span>
+                <span className="border border-primary fw-medium w-auto m-1 p-2">
+                  HTML and CSS
+                </span>
+                <span className="border border-primary fw-medium w-auto m-1 p-2">
+                  javascript
+                </span>
+              </div>
+            </div>
+
+            <div className="d-flex align-item-center justify-content-start mt-5">
+              <i class="fas fa-chalkboard fa-2x me-3"></i>
+              <p>
+                Complete 28 hours a React Essentials course led by a Big Nerd
+                Ranch instructor.
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return <h1>Loading...</h1>;
+    }
+  };
 
   return (
     <div>
-      <h1>You can see details of badges here</h1>
-      <div className="container my-5 d-lg-flex " >
-
-      <div className="  card w-lg-25 my-3 my-lg-0 me-lg-3 carts" >
-        <div
-          className="bg-image hover-overlay  h-50 ripple"
-          data-lgb-ripple-color="dark"
-        >
-          <img src="/images/badge1.jpg" className="img-fluid" height={50} />
-          <a href="#!">
-            <div
-              className="mask"
-              style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
-            />
-          </a>
-        </div>
-        <div className="card-body">
-          <h5 className="card-title">Data Science</h5>
-          <p className="card-text">
-            Data science is the study of data to extract meaningful insights for
-            business. It is a multidisciplinary approach that combines
-            principles and practices from the fields of mathematics, statistics,
-            artificial intelligence, and computer engineering to analyze large
-            amounts of data.
-          </p>
-          <a href="#!" className="btn btn-primary">
-            Button
-          </a>
-        </div>
+      <div className="container">
+        {displayBadgeData()}
       </div>
-
-      <div className="card  w-lg-25 my-3 my-lg-0 me-lg-3 carts">
-        <div className="bg-image hover-overlay  h-50 ripple" data-lgb-ripple-color="dark">
-          <img src="/images/badge2.jpg" className="img-fluid"/>
-        </div>
-        <div className="card-body">
-          <h5 className="card-title">Data Science</h5>
-          <p className="card-text">
-            Data science is the study of data to extract meaningful insights for
-            business. It is a multidisciplinary approach that combines
-            principles and practices from the fields of mathematics, statistics,
-            artificial intelligence, and computer engineering to analyze large
-            amounts of data.
-          </p>
-          <a href="#!" className="btn btn-primary">
-            Button
-          </a>
-        </div>
-      </div>
-
-      <div className="card  w-lg-25 my-3 my-lg-0 me-lg-3 carts">
-        <div
-          className="bg-image hover-overlay  h-50 ripple"
-          data-lgb-ripple-color="dark"
-        >
-          <img src="/images/badge3.jpg" className="img-fluid" height={50}/>
-          <a href="#!">
-            <div
-              className="mask"
-              style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
-            />
-          </a>
-        </div>
-        <div className="card-body">
-          <h5 className="card-title">Data Science</h5>
-          <p className="card-text">
-            Data science is the study of data to extract meaningful insights for
-            business. It is a multidisciplinary approach that combines
-            principles and practices from the fields of mathematics, statistics,
-            artificial intelligence, and computer engineering to analyze large
-            amounts of data.
-          </p>
-          <a href="#!" className="btn btn-primary">
-            Button
-          </a>
-        </div>
-      </div>
-
-      </div>
-      <div className="container my-5 d-lg-flex">
-
-      <div className="  card w-lg-25 my-3 my-lg-0 me-lg-3 carts">
-        <div
-          className="bg-image hover-overlay  h-50 ripple"
-          data-lgb-ripple-color="dark"
-        >
-          <img src="/images/badge1.jpg" className="img-fluid" height={50} />
-          <a href="#!">
-            <div
-              className="mask"
-              style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
-            />
-          </a>
-        </div>
-        <div className="card-body">
-          <h5 className="card-title">Data Science</h5>
-          <p className="card-text">
-            Data science is the study of data to extract meaningful insights for
-            business. It is a multidisciplinary approach that combines
-            principles and practices from the fields of mathematics, statistics,
-            artificial intelligence, and computer engineering to analyze large
-            amounts of data.
-          </p>
-          <a href="#!" className="btn btn-primary">
-            Button
-          </a>
-        </div>
-      </div>
-
-      <div className="card  w-lg-25 my-3 my-lg-0 me-lg-3 carts">
-        <div className="bg-image hover-overlay  h-50 ripple" data-lgb-ripple-color="dark">
-          <img src="/images/badge2.jpg" className="img-fluid"/>
-        </div>
-        <div className="card-body">
-          <h5 className="card-title">Data Science</h5>
-          <p className="card-text">
-            Data science is the study of data to extract meaningful insights for
-            business. It is a multidisciplinary approach that combines
-            principles and practices from the fields of mathematics, statistics,
-            artificial intelligence, and computer engineering to analyze large
-            amounts of data.
-          </p>
-          <a href="#!" className="btn btn-primary">
-            Button
-          </a>
-        </div>
-      </div>
-
-      <div className="card  w-lg-25 my-3 my-lg-0 me-lg-3 carts">
-        <div
-          className="bg-image hover-overlay  h-50 ripple"
-          data-lgb-ripple-color="dark"
-        >
-          <img src="/images/badge3.jpg" className="img-fluid" height={50}/>
-          <a href="#!">
-            <div
-              className="mask"
-              style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
-            />
-          </a>
-        </div>
-        <div className="card-body">
-          <h5 className="card-title">Data Science</h5>
-          <p className="card-text">
-            Data science is the study of data to extract meaningful insights for
-            business. It is a multidisciplinary approach that combines
-            principles and practices from the fields of mathematics, statistics,
-            artificial intelligence, and computer engineering to analyze large
-            amounts of data.
-          </p>
-          <a href="#!" className="btn btn-primary">
-            Button
-          </a>
-        </div>
-      </div>
-
-      </div>
-
-
-
-      
     </div>
   );
 };
