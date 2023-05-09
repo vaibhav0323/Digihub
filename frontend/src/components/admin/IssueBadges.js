@@ -3,14 +3,18 @@ import app_config from "../../config";
 
 const IssueBadges = ({ studentData }) => {
   const [badgeList, setBadgeList] = useState([]);
-  const {apiUrl} = app_config;
+  const { apiUrl } = app_config;
 
   const fetchUserData = async () => {
-    const res = await fetch(apiUrl+"/badge/getall");
+    const res = await fetch(apiUrl + "/badge/getall");
     console.log(res.status);
     const data = await res.json();
     console.log(data);
     setBadgeList(data);
+  };
+
+  const checkBadgeAlreadyIssued = (badgeId) => {
+    return studentData.badges.find((badge) => badge._id === badgeId);
   };
 
   useEffect(() => {
@@ -18,9 +22,9 @@ const IssueBadges = ({ studentData }) => {
   }, []);
 
   const updateStudentData = async (badgeId) => {
-    const res = await fetch(apiUrl+"/student/addBadge/"+studentData._id, {
+    const res = await fetch(apiUrl + "/student/addBadge/" + studentData._id, {
       method: "PUT",
-      body: JSON.stringify({badges : badgeId}),
+      body: JSON.stringify({ badges: badgeId }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -30,24 +34,33 @@ const IssueBadges = ({ studentData }) => {
       const data = await res.json();
       console.log(data);
     }
-  }
+  };
 
   const displayBadges = () => {
     return badgeList.map((badge) => {
       return (
-        <div className="card" style={{ width: "18rem" }}>
-          <img
-            src={badge.badgeImage}
-            className="card-img-top"
-            alt="..."
-            height="200px"
-          />
-          <div className="card-body">
-            <h5 className="card-title">{badge.badgeName}</h5>
-            <p className="card-text">{badge.badgeDescription}</p>
-            <button onClick={e => updateStudentData(badge._id)} className="btn btn-primary">
-              Issue Badge 
-            </button>
+        <div className="col-md-3">
+          <div className="card mb-3" >
+            <img
+              src={
+                badge.badgeImage ? badge.icon : "/images/badge_placeholder.png"
+              }
+              className="card-img-top"
+              alt="..."
+            />
+            <div className="card-body">
+              <h5 className="card-title">{badge.badgeName}</h5>
+              <p className="card-text">{badge.badgeDescription}</p>
+              <button
+                disabled={checkBadgeAlreadyIssued(badge._id)}
+                onClick={(e) => updateStudentData(badge._id)}
+                className="btn btn-primary"
+              >
+                {checkBadgeAlreadyIssued(badge._id)
+                  ? "Already Issued"
+                  : "Issue"}
+              </button>
+            </div>
           </div>
         </div>
       );

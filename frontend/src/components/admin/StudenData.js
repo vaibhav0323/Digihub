@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import IssueBadges from "./IssueBadges";
+import { Link } from "react-router-dom";
 
 const StudentData = () => {
   const [studentList, setStudentList] = useState([]);
@@ -19,55 +20,58 @@ const StudentData = () => {
 
   return (
     <div className="tab2 p-md-3">
-        <>
-  {/* Button trigger modal */}
-  
-  {/* Modal */}
-  <div
-    className="modal fade"
-    id="exampleModal"
-    tabIndex={-1}
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div className="modal-dialog">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">
-            Modal title
-          </h5>
-          <button
-            type="button"
-            className="btn-close"
-            data-mdb-dismiss="modal"
-            aria-label="Close"
-          />
-        </div>
-        <div className="modal-body">{
-          selStudent !==null && (
-            <IssueBadges studentData={selStudent} />
-            )
-        }</div>
-        <div className="modal-footer">
-          <button
-            type="button"
-            className="btn btn-secondary"
-            data-mdb-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="button" className="btn btn-primary">
-            Save changes
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</>
+      <>
+        {/* Button trigger modal */}
 
-      <h1 className="container-fluid text-center badgeHeading2"> Manage Student Data</h1>
+        {/* Modal */}
+        <div
+          className="modal modal-xl fade"
+          id="exampleModal"
+          tabIndex={-1}
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Issue Badges to {selStudent !== null && (selStudent.firstName+' '+selStudent.lastName)}
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-mdb-dismiss="modal"
+                  aria-label="Close"
+                />
+              </div>
+              <div className="modal-body">
+                {selStudent !== null && (
+                  <IssueBadges studentData={selStudent} />
+                )}
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-mdb-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+
+      <h1 className="container-fluid text-center badgeHeading2">
+        {" "}
+        Manage Student Data
+      </h1>
       <hr />
-      <table className="table container-fluid badgeTable2 " >
+      <table className="table container-fluid badgeTable2 ">
         <thead className="fs-6 headBlock2">
           <tr>
             <th>ID</th>
@@ -102,18 +106,21 @@ const StudentData = () => {
               <td>{student.pincode}</td>
               <td>{student.email}</td>
               <td>
-              <button
-    type="button"
-    className="btn btn-primary"
-    data-mdb-toggle="modal"
-    data-mdb-target="#exampleModal"
-    onClick={e => setSelStudent(student)}
-  >
-    Issue Badge
-  </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-mdb-toggle="modal"
+                  data-mdb-target="#exampleModal"
+                  onClick={(e) => setSelStudent(student)}
+                >
+                  Issue Badge
+                </button>
               </td>
               <td>
                 <button className="btn btn-danger">Delete</button>
+              </td>
+              <td>
+                <Link className="btn btn-link" to="/"> <i class="fas fa-eye"></i> View</Link>
               </td>
             </tr>
           ))}
