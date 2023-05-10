@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBInput, MDBTextArea } from "mdb-react-ui-kit";
+import { MDBInput } from "mdb-react-ui-kit";
 import { useFormik } from "formik";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
