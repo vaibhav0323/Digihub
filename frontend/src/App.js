@@ -14,7 +14,6 @@ import Login from "./components/main/Login";
 import SignUp from "./components/main/SignUp";
 import Footer from "./components/main/Footer";
 import BrowseBadges from "./components/main/BrowseBadges";
-import BadgeDetails from "./components/main/BadgeDetails";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminProfile from "./components/admin/AdminProfile";
 import ManageStudent from "./components/admin/ManageStudent";
@@ -85,7 +84,7 @@ function App() {
           <Route path="manageStudent" element={<ManageStudent />} />
           <Route path="adminDashboard" element={<AdminDashboard />} />
           <Route path="manageBadges" element={<ManageBadges />} />
-          <Route path="issueBadges" element={<IssueBadges />} />
+          {/* <Route path="issueBadges" element={<IssueBadges />} /> */}
           <Route path="badgeData" element={<BadgeData />} />
           <Route path="studentData" element={<StudentData />} />
         </Route>
@@ -95,7 +94,6 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="browseBadges" element={<BrowseBadges />} />
-          <Route path="badgeDetails/:id" element={<BadgeDetails />} />
           <Route path="userData" element={<UserData />} />
           <Route path="displayBadges" element={<DisplayBadges />} />
         </Route>

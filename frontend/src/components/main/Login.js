@@ -1,10 +1,10 @@
 import React from "react";
-import { MDBInput } from "mdb-react-ui-kit";
 import { useFormik } from "formik";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import useUserContext from "../../context/UserContext";
+import { TextField } from "@mui/material";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().required("Please enter your email"),
@@ -80,25 +80,26 @@ const Login = () => {
 
               {/* Email input */}
               <div className="mb-4">
-                <MDBInput
-                  label="Email"
-                  type="email"
-                  className="bg-light"
-                  id="email"
-                  value={loginForm.values.email}
-                  onChange={loginForm.handleChange}
-                />
+              <TextField 
+                id="email" 
+                type="email" 
+                className="form-control lgg1" 
+                label="Email" 
+                variant="filled" 
+                value={loginForm.values.email}
+                onChange={loginForm.handleChange}/>
               </div>
               {/* Password input */}
               <div className="mb-3">
-                <MDBInput
-                  label="Password"
-                  type="password"
-                  className="bg-light"
-                  id="password"
-                  value={loginForm.values.password}
-                  onChange={loginForm.handleChange}
-                />
+              <TextField 
+                label="Password" 
+                type="password" 
+                id="password" 
+                className="form-control"
+                variant="filled" 
+
+                value={loginForm.values.password}
+                onChange={loginForm.handleChange}/>
               </div>
               <div className="d-flex justify-content-between align-items-center">
                 {/* Checkbox */}

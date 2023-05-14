@@ -1,17 +1,15 @@
-import { MDBInput } from "mdb-react-ui-kit";
 import { useFormik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
+import { TextField } from "@mui/material";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-  email: Yup.string()
-  .email("Invalid email")
-  .required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
   phone: Yup.string()
     .min(9, "Too Short!")
     .max(11, "Too Long!")
@@ -56,17 +54,17 @@ const SignUp = () => {
           icon: "success",
           title: "Success",
           text: "User Added Successfully!!",
-        })
+        });
       }
     },
   });
   return (
-    <section className="vh-200 signMain" >
-      <div className="container h-100" >
+    <section className="vh-200 signMain">
+      <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11 ">
-            <div className="card text-black my-5  signBody"  >
-              <div className="card-body p-md-5" >
+            <div className="card text-black my-5  signBody">
+              <div className="card-body p-md-5">
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
@@ -82,11 +80,12 @@ const SignUp = () => {
                         {/* name */}
 
                         <div className="flex-fill mb-0 ">
-                          <MDBInput
+                          <TextField
                             label="Name"
                             type="text"
                             className="form-control"
                             id="name"
+                            variant="outlined"
                             value={signupForm.values.name}
                             onChange={signupForm.handleChange}
                           />
@@ -99,11 +98,12 @@ const SignUp = () => {
                         {/* email */}
 
                         <div className="flex-fill mb-0 ">
-                          <MDBInput
+                          <TextField
                             label="Email"
                             type="email"
                             className="form-control"
                             id="email"
+                            variant="outlined"
                             value={signupForm.values.email}
                             onChange={signupForm.handleChange}
                           />
@@ -114,30 +114,30 @@ const SignUp = () => {
                         <i class="fas fa-square-phone fa-lg me-3 mb-4 fa-fw"></i>
                         <div className="flex-fill mb-0 ">
                           {/* phone */}
-
-                          <MDBInput
+                          <TextField
                             label="Contact"
                             type="phone"
                             className="form-control"
                             id="phone"
+                            variant="outlined"
                             value={signupForm.values.phone}
                             onChange={signupForm.handleChange}
                           />
                         </div>
                       </div>
 
-                     
-
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-lock fa-lg me-3 mb-4 fa-fw" />
                         <div className="flex-fill mb-0 ">
                           {/* password */}
 
-                          <MDBInput
+                          
+                          <TextField
                             label="Password"
-                            className="form-control"
                             type="password"
+                            className="form-control"
                             id="password"
+                            variant="outlined"
                             value={signupForm.values.password}
                             onChange={signupForm.handleChange}
                           />
@@ -149,11 +149,12 @@ const SignUp = () => {
                         <div className="flex-fill mb-0  ">
                           {/* confirm password */}
 
-                          <MDBInput
+                          <TextField
                             label="Repeat Your Password"
                             type="password"
                             className="form-control"
                             id="cPassword"
+                            variant="outlined"
                             value={signupForm.values.cPassword}
                             onChange={signupForm.handleChange}
                           />
@@ -175,18 +176,15 @@ const SignUp = () => {
                         </label>
                       </div>
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button
-                          type="submit"
-                          className="btn btn-lg regButton"
-                        >
+                        <button type="submit" className="btn btn-lg regButton">
                           Register
                         </button>
                       </div>
                     </form>
                   </div>
-                  
+
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex d-flex flex-column align-items-center order-1 order-lg-2">
-                  <h3 className="text-center signUpHead">
+                    <h3 className="text-center signUpHead">
                       The Power of Proof: Display Your Credentials Digitally.
                     </h3>
                     <img

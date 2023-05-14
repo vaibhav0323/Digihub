@@ -239,7 +239,7 @@ height: auto;
 
 .signMain
 {
-  /* background-image: url("D:\Digihub\frontend\public\images\signUpBg.jpg"); */
+  background-image: url("D:\Digihub\frontend\public\images\signUpBg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -260,11 +260,36 @@ color: black;
 backdrop-filter: blur(20px);
 }
 
-.signUpForm 
-{
-  color: black;
-}
+
 
 .studentForm
 {
   background-color: #a5c187;}
+
+.lgg1 label
+{
+  color: black;
+}
+  
+
+.myslide1{
+  height: 100vh; 
+  background-image: url(D:\Digihub\frontend\public\images\s1.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.myslide2{
+  height: 100vh; 
+  background-image: url(D:\Digihub\frontend\public\images\s2.jpeg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.myslide3{
+  height: 100vh; 
+  background-image: url(D:\Digihub\frontend\public\images\s3.jpeg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

@@ -31,7 +31,7 @@ const BrowseBadges = () => {
     // }
 
     setBadgeList(
-      masterList.filter((badge) => badge.title.includes(searchValue))
+      masterList.filter((badge) => badge.title.toLowerCase().includes(searchValue.toLowerCase() ))
     );
   };
 
@@ -51,7 +51,7 @@ const BrowseBadges = () => {
           </a>
         </div>
         <div className="card-body">
-          <h5 className="card-title">Data Science</h5>
+          <h5 className="card-title">{badge.title}</h5>
           <p className="card-text">
             Data science is the study of data to extract meaningful insights for
             business. It is a multidisciplinary approach that combines

@@ -73,11 +73,6 @@ const Navbar = () => {
             </NavLink>
            </li> 
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/main/badgeDetails">
-              Badge Details
-            </NavLink>
-          </li>
-          <li className="nav-item">
             <NavLink className="nav-link active" to="/main/userData">
               User Data
             </NavLink>

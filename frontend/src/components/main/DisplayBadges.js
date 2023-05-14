@@ -1,5 +1,4 @@
 import React from "react";
-import { MDBPopover, MDBPopoverBody, MDBPopoverHeader } from "mdb-react-ui-kit";
 
 const DisplayBadges = () => {
   return (

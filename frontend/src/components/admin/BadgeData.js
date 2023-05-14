@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import app_config from "../../config";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const BadgeData = () => {
   const [badgeList, setBadgeList] = useState([]);
@@ -17,6 +18,22 @@ const BadgeData = () => {
   useEffect(() => {
     fetchUserData();
   }, []);
+
+  const deleteBadge = async (id) => {
+    console.log(id);
+    const res = await fetch("http://localhost:5000/badge/delete/" + id, {
+      method: "DELETE",
+    });
+    console.log(res.status);
+    if (res.status === 200) {
+      fetchUserData();
+      Swal.fire({
+        icon: "success",
+        title: "success",
+        text: "Badge Deleted Successfully",
+      });
+    }
+  };
 
   return (
     <div className="tab p-md-3">
@@ -46,7 +63,12 @@ const BadgeData = () => {
               <td>{badge.description.slice(0, 30)}...</td>
               <td>{new Date(badge.createdAt).toLocaleDateString()}</td>
               <td>
-                <button className="btn btn-danger"><i class="fas fa-trash-alt    "></i></button>
+              <button
+                  className="btn btn-danger"
+                  onClick={() => deleteBadge(badge._id)}
+                >
+                  Delete
+                </button>
               </td>
               <td>
                 <Link className="btn btn-primary" to={'/main/badgeDetails/'+badge._id}>

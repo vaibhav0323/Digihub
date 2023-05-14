@@ -1,23 +1,18 @@
 import React from "react";
-import { MDBInput, MDBTextArea } from "mdb-react-ui-kit";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import app_config from "../../config";
 import { toast } from "react-hot-toast";
+import { TextField } from "@mui/material";
 
-const {apiUrl} = app_config;
+const { apiUrl } = app_config;
 
 const BadgeSchema = Yup.object().shape({
-  title: Yup.string()
-  .required("Required"),
-  course: Yup.string()
-  .required("Required"),
-  description: Yup.string()
-  .required("Required"),
-  createdAt: Yup.string()
-  .required("Required"),
-  icon: Yup.string()
-  .required("Required"),
+  title: Yup.string().required("Required"),
+  course: Yup.string().required("Required"),
+  description: Yup.string().required("Required"),
+  createdAt: Yup.string().required("Required"),
+  icon: Yup.string().required("Required"),
 });
 
 const uploadImage = async (e) => {
@@ -27,7 +22,7 @@ const uploadImage = async (e) => {
   fd.append("myfile", file);
   fetch(apiUrl + "/util/uploadfile", {
     method: "POST",
-    
+
     body: fd,
   }).then((res) => {
     if (res.status === 200) {
@@ -35,7 +30,7 @@ const uploadImage = async (e) => {
       toast.success("File Uploaded!!");
     }
   });
-}
+};
 
 const ManageBadges = () => {
   const badgeForm = useFormik({
@@ -58,96 +53,122 @@ const ManageBadges = () => {
       });
 
       console.log(response.status);
-    }
+    },
   });
   return (
-    <section className="h-100 h-custom" style={{backgroundImage:"url('/images/pexel1.jpeg')", backgroundSize:"cover"}}>
-      <div className="" style={{backdropFilter: "blur(5px)",
-  backgroundColor:"rgba(0,0,0,0.4)"}}>
-      <div className="container py-5 h-100 ">
-        <div className="row d-flex justify-content-center align-items-center h-100 ">
-          <div className="col-lg-8 col-xl-6 ">
-            <div className="card rounded-3 " style={{boxShadow:"9px 8px 8px -4px lightblue,-9px -8px 8px -4px lightblue"}}>
-              <img
-                src="/images/bn.jpg"
-                className="w-100"
-                height={160}
+    <section
+      className="h-100 h-custom"
+      style={{
+        backgroundImage: "url('/images/pexel1.jpeg')",
+        backgroundSize: "cover",
+      }}
+    >
+      <div
+        className=""
+        style={{
+          backdropFilter: "blur(5px)",
+          backgroundColor: "rgba(0,0,0,0.4)",
+        }}
+      >
+        <div className="container py-5 h-100 ">
+          <div className="row d-flex justify-content-center align-items-center h-100 ">
+            <div className="col-lg-8 col-xl-6 ">
+              <div
+                className="card rounded-3 "
                 style={{
-                  borderTopLeftRadius: ".3rem",
-                  borderTopRightRadius: ".3rem",
+                  boxShadow:
+                    "9px 8px 8px -4px lightblue,-9px -8px 8px -4px lightblue",
                 }}
-                alt="Sample photo"
-              />
+              >
+                <img
+                  src="/images/bn.jpg"
+                  className="w-100"
+                  height={160}
+                  style={{
+                    borderTopLeftRadius: ".3rem",
+                    borderTopRightRadius: ".3rem",
+                  }}
+                  alt="Sample photo"
+                />
 
-              <div className="card-body p-4 p-md-5 ">
-                <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">
-                  Add Badges
-                </h3>
-                <form className="px-md-2 bg-light"
-                onSubmit={badgeForm.handleSubmit}
-                >
-                  <div className="mb-4">
-                    <MDBInput
-                      label="Title"
-                      type="text"
-                      className="form-control"
-                      id="title"
-                      value={badgeForm.values.title}
-                      onChange={badgeForm.handleChange}
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <MDBInput
-                      label="Course Name"
-                      type="text"
-                      className="form-control"
-                      id="course"
-                      value={badgeForm.values.course}
-                      onChange={badgeForm.handleChange}
-                    />
-                  </div>
+                <div className="card-body p-4 p-md-5 ">
+                  <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">
+                    Add Badges
+                  </h3>
+                  <form
+                    className="px-md-2 bg-light"
+                    onSubmit={badgeForm.handleSubmit}
+                  >
+                    <div className="mb-4">
+                      <TextField
+                        label="Title"
+                        type="text"
+                        className="form-control"
+                        id="title"
+                        value={badgeForm.values.title}
+                        onChange={badgeForm.handleChange}
+                        variant="outlined"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <TextField
+                        label="Course Name"
+                        type="text"
+                        className="form-control"
+                        id="course"
+                        value={badgeForm.values.course}
+                        onChange={badgeForm.handleChange}
+                        variant="outlined"
+                      />
+                    </div>
 
-                  <div className="mb-4">
-                    <MDBTextArea
-                      label="Description"
-                      id="description"
-                      rows={2}
+                    <div className="mb-4">
+                      <TextField
+                        label="Description"
+                        id="description"
+                        rows={2}
                         value={badgeForm.values.description}
-                      onChange={badgeForm.handleChange}
-                    />
-                  </div>
+                        onChange={badgeForm.handleChange}
+                        variant="outlined"
+                      />
+                    </div>
 
-                  <div className="mb-4 createdAtpicker">
-                    <MDBInput
-                      label="Created At"
-                      type="date"
-                      className="form-control"
-                      id="createdAt"
-                      value={badgeForm.values.createdAt}
-                      onChange={badgeForm.handleChange}
-                    />
-                  </div>
+                    <div className="mb-4 createdAtpicker">
+                      <TextField
+                        label="Created At"
+                        type="date"
+                        className="form-control"
+                        id="createdAt"
+                        value={badgeForm.values.createdAt}
+                        onChange={badgeForm.handleChange}
+                        variant="outlined"
+                      />
+                    </div>
 
-                  <div className="mb-4">
-                    <MDBInput
+                    <div className="mb-4">
+                      <TextField
                       label="Icon"
                       type="text"
                       className="form-control"
                       id="icon"
                       value={badgeForm.values.icon}
                       onChange={badgeForm.handleChange}
-                    />
-                  </div>
+                      variant="outlined"
+                      />
+                    </div>
 
-                  <button type="submit" className="btn btn-success btn-lg mb-1">
-                    ADD BADGE
-                  </button>
-                </form>
+                    <button
+                      type="submit"
+                      className="btn btn-success btn-lg mb-1"
+                    >
+                      ADD BADGE
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </section>
   );

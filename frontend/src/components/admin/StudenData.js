@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import IssueBadges from "./IssueBadges";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const StudentData = () => {
   const [studentList, setStudentList] = useState([]);
@@ -17,6 +18,23 @@ const StudentData = () => {
   useEffect(() => {
     fetchUserData();
   }, []);
+
+  const deleteStudent = async (id) => {
+    console.log(id);
+    const res = await fetch("http://localhost:5000/student/delete/" + id, {
+      method: "DELETE",
+    });
+    console.log(res.status);
+    if (res.status === 200) {
+      fetchUserData();
+      // alert("User Deleted Successfully");
+      Swal.fire({
+        icon: "success",
+        title: "success",
+        text: "Student Deleted Successfully",
+      });
+    }
+  };
 
   return (
     <div className="tab2 p-md-3">
@@ -117,7 +135,12 @@ const StudentData = () => {
                 </button>
               </td>
               <td>
-                <button className="btn btn-danger">Delete</button>
+              <button
+                  className="btn btn-danger"
+                  onClick={() => deleteStudent(student._id)}
+                >
+                  Delete
+                </button>
               </td>
               <td>
                 <Link className="btn btn-link" to="/"> <i class="fas fa-eye"></i> View</Link>

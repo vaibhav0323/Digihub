@@ -14,6 +14,7 @@ const IssueBadges = ({ studentData }) => {
   };
 
   const checkBadgeAlreadyIssued = (badgeId) => {
+    // if(!studentData) return false;
     return studentData.badges.find((badge) => badge._id === badgeId);
   };
 
