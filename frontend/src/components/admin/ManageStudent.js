@@ -1,7 +1,15 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField } from "@mui/material";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+} from "@mui/material";
+import Swal from "sweetalert2";
 
 const StudentSchema = Yup.object().shape({
   firstName: Yup.string().required("Required"),
@@ -36,7 +44,7 @@ const ManageStudent = () => {
     },
     onSubmit: async (values, { setSubmitting }) => {
       console.log(values);
-      return;
+      // return;
       const response = await fetch("http://localhost:5000/student/add", {
         method: "POST",
         body: JSON.stringify(values),
@@ -47,6 +55,19 @@ const ManageStudent = () => {
       });
 
       console.log(response.status);
+      if (response.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Badge Added Successfully!!",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
+      }
     },
   });
   return (
@@ -68,48 +89,44 @@ const ManageStudent = () => {
                       }}
                     />
                   </div>
-                  
+
                   <div className="col-xl-6">
                     <div className="card-body p-md-5 text-black">
-                     
                       <h3 className="mb-5 text-uppercase">
                         Student registration form
                       </h3>
-                      
+
                       <div className="row">
-                        
                         <div className="col-md-6 mb-4">
-                            <div className="">
-                              <TextField
-                                label="First Name"
-                                type="text"
-                                className="form-control  "
-                                id="firstName"
-                                value={studentForm.values.firstName}
-                                onChange={studentForm.handleChange}
-                                variant="outlined"
-                              />
-                            </div>
+                          <div className="">
+                            <TextField
+                              label="First Name"
+                              type="text"
+                              className="form-control  "
+                              id="firstName"
+                              value={studentForm.values.firstName}
+                              onChange={studentForm.handleChange}
+                              variant="outlined"
+                            />
+                          </div>
                         </div>
 
                         <div className="col-md-6 mb-4">
-                            <div className=" ">
-                              <TextField
-                                label="Last Name"
-                                type="text"
-                                className="form-control  "
-                                id="lastName"
-                                value={studentForm.values.lastName}
-                                onChange={studentForm.handleChange}
-                                variant="outlined"
-                              />
-                            </div>
+                          <div className=" ">
+                            <TextField
+                              label="Last Name"
+                              type="text"
+                              className="form-control  "
+                              id="lastName"
+                              value={studentForm.values.lastName}
+                              onChange={studentForm.handleChange}
+                              variant="outlined"
+                            />
+                          </div>
                         </div>
-
                       </div>
-                      
+
                       <div className="row">
-                       
                         <div className="col-md-6 mb-4">
                           <div className=" ">
                             <TextField
@@ -135,22 +152,20 @@ const ManageStudent = () => {
                               onChange={studentForm.handleChange}
                               variant="outlined"
                             />
-                      </div>
-                       
+                          </div>
                         </div>
-
                       </div>
-                      
+
                       <div className="mb-4">
                         <div>
-                        <TextField
-                          label="Address"
-                          id="address"
-                          maxRows={4}
-                          variant="outlined"
-                          value={studentForm.values.address}
-                          onChange={studentForm.handleChange}
-                        />
+                          <TextField
+                            label="Address"
+                            id="address"
+                            maxRows={4}
+                            variant="outlined"
+                            value={studentForm.values.address}
+                            onChange={studentForm.handleChange}
+                          />
                         </div>
                       </div>
 
@@ -174,83 +189,79 @@ const ManageStudent = () => {
                         </FormControl>
                       </div> */}
 
-                      
-                      
                       <div className="  mb-4">
                         <TextField
-                            label="Email ID"
-                            type="email"
-                            className="form-control"
-                            placeholder=""
-                            id="email"
-                            value={studentForm.values.email}
-                            onChange={studentForm.handleChange}
-                            variant="outlined"
-                          />
+                          label="Email ID"
+                          type="email"
+                          className="form-control"
+                          placeholder=""
+                          id="email"
+                          value={studentForm.values.email}
+                          onChange={studentForm.handleChange}
+                          variant="outlined"
+                        />
                       </div>
 
                       <div className="mb-4">
                         <TextField
-                            label="Contact"
-                            type="text"
-                            className="form-control"
-                            placeholder=""
-                            id="contact"
-                            value={studentForm.values.contact}
-                            onChange={studentForm.handleChange}
-                            variant="outlined"
-                          />
+                          label="Contact"
+                          type="text"
+                          className="form-control"
+                          placeholder=""
+                          id="contact"
+                          value={studentForm.values.contact}
+                          onChange={studentForm.handleChange}
+                          variant="outlined"
+                        />
                       </div>
 
                       <div className="mb-4">
                         <TextField
-                            label="Course"
-                            type="text"
-                            className="form-control  "
-                            id="course"
-                            value={studentForm.values.course}
-                            onChange={studentForm.handleChange}
-                            variant="outlined"
-                          />
-                      </div> 
-
-                      <div className="  mb-4">
-                        <TextField
-                            label="College or University"
-                            type="text"
-                            className="form-control  "
-                            id="college"
-                            value={studentForm.values.college}
-                            onChange={studentForm.handleChange}
-                            variant="outlined"
-                          />
+                          label="Course"
+                          type="text"
+                          className="form-control  "
+                          id="course"
+                          value={studentForm.values.course}
+                          onChange={studentForm.handleChange}
+                          variant="outlined"
+                        />
                       </div>
 
                       <div className="  mb-4">
                         <TextField
-                            label="DOB"
-                            type="text"
-                            className="form-control  "
-                            id="dob"
-                            value={studentForm.values.dob}
-                            onChange={studentForm.handleChange}
-                            variant="outlined"
-                          />
+                          label="College or University"
+                          type="text"
+                          className="form-control  "
+                          id="college"
+                          value={studentForm.values.college}
+                          onChange={studentForm.handleChange}
+                          variant="outlined"
+                        />
                       </div>
 
                       <div className="  mb-4">
                         <TextField
-                            label="Pincode"
-                            type="text"
-                            className="form-control  "
-                            id="pincode"
-                            value={studentForm.values.pincode}
-                            onChange={studentForm.handleChange}
-                            variant="outlined"
-                          />
+                          label="DOB"
+                          type="text"
+                          className="form-control  "
+                          id="dob"
+                          value={studentForm.values.dob}
+                          onChange={studentForm.handleChange}
+                          variant="outlined"
+                        />
                       </div>
 
-                      
+                      <div className="  mb-4">
+                        <TextField
+                          label="Pincode"
+                          type="text"
+                          className="form-control  "
+                          id="pincode"
+                          value={studentForm.values.pincode}
+                          onChange={studentForm.handleChange}
+                          variant="outlined"
+                        />
+                      </div>
 
                       <div className="d-flex justify-content-end pt-3">
                         <button type="reset" className="btn btn-light btn-lg">
@@ -263,10 +274,8 @@ const ManageStudent = () => {
                           Submit form
                         </button>
                       </div>
-
                     </div>
                   </div>
-                  
                 </div>
               </form>
             </div>

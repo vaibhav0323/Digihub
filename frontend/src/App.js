@@ -96,6 +96,7 @@ function App() {
           <Route path="browseBadges" element={<BrowseBadges />} />
           <Route path="userData" element={<UserData />} />
           <Route path="displayBadges" element={<DisplayBadges />} />
+          {/* <Route path="displayBadges" element={<DisplayBadges />} /> */}
         </Route>
 
         <Route path="user" element={<User />}>

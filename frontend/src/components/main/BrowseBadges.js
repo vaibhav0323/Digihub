@@ -13,6 +13,7 @@ const BrowseBadges = () => {
     setLoading(true);
     const response = await fetch(apiUrl + "/badge/getall");
     const data = await response.json();
+    console.log(data);
     setBadgeList(data);
     setMasterList(data);
     setLoading(false);
@@ -42,7 +43,7 @@ const BrowseBadges = () => {
           className="bg-image hover-overlay  h-50 ripple"
           data-lgb-ripple-color="dark"
         >
-          <img src={badge.icon ? (apiUrl+"/"+badge.icon) : '/images/badge_placeholder.png'} className="img-fluid" alt="" />
+          <img src={badge.icon ? (apiUrl+"/"+badge.icon) : '/images/reactBadge.png'} className="img-fluid" alt="" />
           <a href="#!">
             <div
               className="mask"
@@ -51,7 +52,7 @@ const BrowseBadges = () => {
           </a>
         </div>
         <div className="card-body">
-          <h5 className="card-title">{badge.title}</h5>
+          <h5 className="card-title">{badge.title} </h5>
           <p className="card-text">
             Data science is the study of data to extract meaningful insights for
             business. It is a multidisciplinary approach that combines

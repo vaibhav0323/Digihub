@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import app_config from "../../config";
 import { toast } from "react-hot-toast";
 import { TextField } from "@mui/material";
+import Swal from "sweetalert2";
 
 const { apiUrl } = app_config;
 
@@ -15,24 +16,12 @@ const BadgeSchema = Yup.object().shape({
   icon: Yup.string().required("Required"),
 });
 
-const uploadImage = async (e) => {
-  const file = e.target.files[0];
 
-  const fd = new FormData();
-  fd.append("myfile", file);
-  fetch(apiUrl + "/util/uploadfile", {
-    method: "POST",
-
-    body: fd,
-  }).then((res) => {
-    if (res.status === 200) {
-      console.log("file uploaded");
-      toast.success("File Uploaded!!");
-    }
-  });
-};
 
 const ManageBadges = () => {
+
+  const [selImage, setSelImage] = useState(null);
+
   const badgeForm = useFormik({
     initialValues: {
       title: "",
@@ -42,6 +31,7 @@ const ManageBadges = () => {
       icon: "",
     },
     onSubmit: async (values, { setSubmitting }) => {
+      values.icon = selImage.name;
       console.log(values);
       const response = await fetch("http://localhost:5000/badge/add", {
         method: "POST",
@@ -53,8 +43,33 @@ const ManageBadges = () => {
       });
 
       console.log(response.status);
+      if (response.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Badge Added Successfully!!",
+        });
+      }
     },
   });
+
+  const uploadImage = async (e) => {
+    const file = e.target.files[0];
+    setSelImage(file);
+    const fd = new FormData();
+    fd.append("myfile", file);
+    fetch(apiUrl + "/util/uploadfile", {
+      method: "POST",
+  
+      body: fd,
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log("file uploaded");
+        toast.success("File Uploaded!!");
+      }
+    });
+  };
+
   return (
     <section
       className="h-100 h-custom"
@@ -124,9 +139,11 @@ const ManageBadges = () => {
 
                     <div className="mb-4">
                       <TextField
+                        fullWidth
                         label="Description"
                         id="description"
-                        rows={2}
+                        multiline
+                        rows={3}
                         value={badgeForm.values.description}
                         onChange={badgeForm.handleChange}
                         variant="outlined"
@@ -135,7 +152,6 @@ const ManageBadges = () => {
 
                     <div className="mb-4 createdAtpicker">
                       <TextField
-                        label="Created At"
                         type="date"
                         className="form-control"
                         id="createdAt"
@@ -145,17 +161,7 @@ const ManageBadges = () => {
                       />
                     </div>
 
-                    <div className="mb-4">
-                      <TextField
-                      label="Icon"
-                      type="text"
-                      className="form-control"
-                      id="icon"
-                      value={badgeForm.values.icon}
-                      onChange={badgeForm.handleChange}
-                      variant="outlined"
-                      />
-                    </div>
+                    <input type="file" onChange={uploadImage} />
 
                     <button
                       type="submit"
