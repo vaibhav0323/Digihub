@@ -30,9 +30,25 @@ const ManageBadges = () => {
     "HTML",
     "CSS",
     "JavaScript",
+    "Bootstrap",
+    "Tailwind",
+    "Material UI",
     "React",
     "Node",
     "MongoDB",
+    "Python",
+    "Java",
+    "MySQL",
+    "EXpress",
+    "Django",
+    "C++",
+    "C",
+    "C#",
+    "PHP",
+    "Angular",
+    "Flask",
+
+
   ];
 
   const badgeForm = useFormik({
