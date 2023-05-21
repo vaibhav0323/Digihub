@@ -3,8 +3,14 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import app_config from "../../config";
 import { toast } from "react-hot-toast";
-import { TextField } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  TextField,
+} from "@mui/material";
 import Swal from "sweetalert2";
+import { lightGreen } from "@mui/material/colors";
 
 const { apiUrl } = app_config;
 
@@ -16,11 +22,18 @@ const BadgeSchema = Yup.object().shape({
   icon: Yup.string().required("Required"),
 });
 
-
-
 const ManageBadges = () => {
-
   const [selImage, setSelImage] = useState(null);
+  const [selSkills, setSelSkills] = useState(new Set());
+
+  const skillOptions = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Node",
+    "MongoDB",
+  ];
 
   const badgeForm = useFormik({
     initialValues: {
@@ -45,9 +58,9 @@ const ManageBadges = () => {
       console.log(response.status);
       if (response.status === 200) {
         Swal.fire({
-          icon: "success",
-          title: "Success",
-          text: "Badge Added Successfully!!",
+          icon: "warning",
+          title: "warning",
+          text: "Badge Added warningfully!!",
         });
       }
     },
@@ -60,12 +73,12 @@ const ManageBadges = () => {
     fd.append("myfile", file);
     fetch(apiUrl + "/util/uploadfile", {
       method: "POST",
-  
+
       body: fd,
     }).then((res) => {
       if (res.status === 200) {
         console.log("file uploaded");
-        toast.success("File Uploaded!!");
+        toast.warning("File Uploaded!!");
       }
     });
   };
@@ -88,13 +101,7 @@ const ManageBadges = () => {
         <div className="container py-5 h-100 ">
           <div className="row d-flex justify-content-center align-items-center h-100 ">
             <div className="col-lg-8 col-xl-6 ">
-              <div
-                className="card rounded-3 "
-                style={{
-                  boxShadow:
-                    "9px 8px 8px -4px lightblue,-9px -8px 8px -4px lightblue",
-                }}
-              >
+              <div className="card  ">
                 <img
                   src="/images/bn.jpg"
                   className="w-100"
@@ -106,14 +113,11 @@ const ManageBadges = () => {
                   alt="Sample photo"
                 />
 
-                <div className="card-body p-4 p-md-5 ">
-                  <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">
+                <div className="card-body p-4 p-md-5 mngbdg">
+                  <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 ">
                     Add Badges
                   </h3>
-                  <form
-                    className="px-md-2 bg-light"
-                    onSubmit={badgeForm.handleSubmit}
-                  >
+                  <form className="px-md-2 " onSubmit={badgeForm.handleSubmit}>
                     <div className="mb-4">
                       <TextField
                         label="Title"
@@ -123,6 +127,7 @@ const ManageBadges = () => {
                         value={badgeForm.values.title}
                         onChange={badgeForm.handleChange}
                         variant="outlined"
+                        color="warning"
                       />
                     </div>
                     <div className="mb-4">
@@ -134,6 +139,7 @@ const ManageBadges = () => {
                         value={badgeForm.values.course}
                         onChange={badgeForm.handleChange}
                         variant="outlined"
+                        color="warning"
                       />
                     </div>
 
@@ -144,9 +150,11 @@ const ManageBadges = () => {
                         id="description"
                         multiline
                         rows={3}
+                        className="form-control"
                         value={badgeForm.values.description}
                         onChange={badgeForm.handleChange}
                         variant="outlined"
+                        color="warning"
                       />
                     </div>
 
@@ -158,14 +166,47 @@ const ManageBadges = () => {
                         value={badgeForm.values.createdAt}
                         onChange={badgeForm.handleChange}
                         variant="outlined"
+                        color="warning"
                       />
                     </div>
 
-                    <input type="file" onChange={uploadImage} />
+                    <div>
+                      <FormGroup>
+                        <div className="d-flex align-item-center justify-content-between">
+                          {skillOptions.map((skill) => (
+                            <FormControlLabel
+                              control={
+                                <Checkbox checked={selSkills.has(skill)} onChange={(e, v) => {
+                                  if(v){
+                                    const temp = selSkills;
+                                    temp.add(skill);
+                                    setSelSkills(temp);
+                                  }else{
+                                    const temp = selSkills;
+                                    temp.delete(skill);
+                                    setSelSkills(temp);
+                                  }
+                                }} />
+                              }
+                              label={skill}
+                            />
+                          ))}
+                        </div>
+                      </FormGroup>
+                    </div>
+
+                    <div className="my-4">
+                      <input type="file" onChange={uploadImage} />
+                    </div>
 
                     <button
                       type="submit"
-                      className="btn btn-success btn-lg mb-1"
+                      className="btn  btn-lg mb-1 addbdgbtn"
+                      style={{
+                        backgroundColor: "lightGreen",
+                        fontWeight: "bold",
+                        color: "black",
+                      }}
                     >
                       ADD BADGE
                     </button>

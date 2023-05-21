@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
@@ -10,6 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 import Swal from "sweetalert2";
+import app_config from "../../config";
 
 const StudentSchema = Yup.object().shape({
   firstName: Yup.string().required("Required"),
@@ -28,6 +29,32 @@ const StudentSchema = Yup.object().shape({
 });
 
 const ManageStudent = () => {
+
+  const [selGender, setSelGender] = useState('male');
+  const { apiUrl } = app_config;
+
+  const [selImage, setSelImage] = useState('');
+
+  const uploadImage = (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("myfile", file);
+    setSelImage(file);
+    fetch(apiUrl + "/util/uploadfile", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Image Uploaded Successfully!!",
+          });
+        }
+      })
+  }
+
   const studentForm = useFormik({
     initialValues: {
       firstName: "",
@@ -43,6 +70,8 @@ const ManageStudent = () => {
       course: "",
     },
     onSubmit: async (values, { setSubmitting }) => {
+      values.avatar = selImage.name;
+      values.gender = selGender;
       console.log(values);
       // return;
       const response = await fetch("http://localhost:5000/student/add", {
@@ -71,28 +100,33 @@ const ManageStudent = () => {
     },
   });
   return (
-    <section className="h-100 bg-dark">
-      <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col">
+    <section className="h-100 mainReg">
+      <div className="container py-5 h-100 ">
+        <div className="row d-flex justify-content-center align-items-center h-100 ">
+          <div className="col ">
             <div className="card card-registration my-4 studentForm">
               <form onSubmit={studentForm.handleSubmit}>
                 <div className="row g-0">
-                  <div className="col-xl-6 d-none d-xl-block">
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
-                      alt="Sample photo"
-                      className="img-fluid"
-                      style={{
-                        borderTopLeftRadius: ".25rem",
-                        borderBottomLeftRadius: ".25rem",
-                      }}
-                    />
+                  <div className="col-xl-4 d-none d-xl-block leftPart">
+                    <div className="mt-5 imgdiv">
+                      <img
+                        src="/images/reg1.png"
+                        alt="Sample photo"
+                        width={500}
+                        className="img-fluid imgreg"
+                      />
+                    </div>
+
+                    <div className="mt-md-5 textdiv">
+                      <h3 className="mt-5">Welcome</h3>
+                      <p className="fw-bold mt-4">Register, Learn, Succeed: Your Path to Achievement</p>
+                    </div>
+
                   </div>
 
-                  <div className="col-xl-6">
+                  <div className="col-xl-8 rightpart">
                     <div className="card-body p-md-5 text-black">
-                      <h3 className="mb-5 text-uppercase">
+                      <h3 className="mb-5 text-uppercase text-center">
                         Student registration form
                       </h3>
 
@@ -107,6 +141,7 @@ const ManageStudent = () => {
                               value={studentForm.values.firstName}
                               onChange={studentForm.handleChange}
                               variant="outlined"
+                              color="secondary"
                             />
                           </div>
                         </div>
@@ -121,6 +156,7 @@ const ManageStudent = () => {
                               value={studentForm.values.lastName}
                               onChange={studentForm.handleChange}
                               variant="outlined"
+                              color="secondary"
                             />
                           </div>
                         </div>
@@ -137,6 +173,7 @@ const ManageStudent = () => {
                               value={studentForm.values.motherName}
                               onChange={studentForm.handleChange}
                               variant="outlined"
+                              color="secondary"
                             />
                           </div>
                         </div>
@@ -151,6 +188,7 @@ const ManageStudent = () => {
                               value={studentForm.values.fatherName}
                               onChange={studentForm.handleChange}
                               variant="outlined"
+                              color="secondary"
                             />
                           </div>
                         </div>
@@ -159,35 +197,42 @@ const ManageStudent = () => {
                       <div className="mb-4">
                         <div>
                           <TextField
+                            fullWidth
                             label="Address"
                             id="address"
-                            maxRows={4}
+                            multiline
+                            rows={2}
                             variant="outlined"
                             value={studentForm.values.address}
                             onChange={studentForm.handleChange}
+                            color="secondary"
                           />
                         </div>
                       </div>
 
-                      {/* <div className="mb-4">
-                        <FormControl>
-                        <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
-                          <RadioGroup
-                            row
-                            aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group">
-                            <FormControlLabel value="female" control={<Radio />} label="Female" />
-                            <FormControlLabel value="male" control={<Radio />} label="Male" />
-                            <FormControlLabel value="other" control={<Radio />} label="Other" />
-                            <FormControlLabel
-                              value="disabled"
-                              disabled
-                              control={<Radio />}
-                              label="other"
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                      </div> */}
+                      <div className="row mb-4">
+                        <div className="col-md-6">
+                          <div className="mb-4">
+                            <FormControl>
+                              <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+                              <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group" onChange={(e, v) => setSelGender(v)} value={selGender}>
+                                <FormControlLabel value="female" control={<Radio />} label="Female" />
+                                <FormControlLabel value="male" control={<Radio />} label="Male" />
+                                <FormControlLabel value="other" control={<Radio />} label="Other" />
+
+                              </RadioGroup>
+                            </FormControl>
+                          </div>
+                        </div>
+                        <div className="col-md-6">
+                          <label htmlFor="#uploadimage" >Uplaod Imahe</label>
+                          <input id="uploadimage" type="file" onChange={uploadImage} />
+                        </div>
+                      </div>
+
 
                       <div className="  mb-4">
                         <TextField
@@ -199,8 +244,10 @@ const ManageStudent = () => {
                           value={studentForm.values.email}
                           onChange={studentForm.handleChange}
                           variant="outlined"
+                          color="secondary"
                         />
                       </div>
+
 
                       <div className="mb-4">
                         <TextField
@@ -212,6 +259,7 @@ const ManageStudent = () => {
                           value={studentForm.values.contact}
                           onChange={studentForm.handleChange}
                           variant="outlined"
+                          color="secondary"
                         />
                       </div>
 
@@ -219,11 +267,12 @@ const ManageStudent = () => {
                         <TextField
                           label="Course"
                           type="text"
-                          className="form-control  "
+                          className="form-control"
                           id="course"
                           value={studentForm.values.course}
                           onChange={studentForm.handleChange}
                           variant="outlined"
+                          color="secondary"
                         />
                       </div>
 
@@ -231,11 +280,12 @@ const ManageStudent = () => {
                         <TextField
                           label="College or University"
                           type="text"
-                          className="form-control  "
+                          className="form-control"
                           id="college"
                           value={studentForm.values.college}
                           onChange={studentForm.handleChange}
                           variant="outlined"
+                          color="secondary"
                         />
                       </div>
 
@@ -248,6 +298,7 @@ const ManageStudent = () => {
                           value={studentForm.values.dob}
                           onChange={studentForm.handleChange}
                           variant="outlined"
+                          color="secondary"
                         />
                       </div>
 
@@ -255,7 +306,8 @@ const ManageStudent = () => {
                         <TextField
                           label="Pincode"
                           type="text"
-                          className="form-control  "
+                          className="form-control"
+                          color="secondary"
                           id="pincode"
                           value={studentForm.values.pincode}
                           onChange={studentForm.handleChange}
@@ -264,12 +316,12 @@ const ManageStudent = () => {
                       </div>
 
                       <div className="d-flex justify-content-end pt-3">
-                        <button type="reset" className="btn btn-light btn-lg">
+                        <button type="reset" className="btn fw-bold btn-lg" style={{ backgroundColor: "skyblue", color: "black" }}>
                           Reset all
                         </button>
                         <button
                           type="submit"
-                          className="btn btn-warning btn-lg ms-2"
+                          className="btn fw-bold ms-2 btn-lg" style={{ backgroundColor: "rgb(255, 187, 0)", color: "black" }}
                         >
                           Submit form
                         </button>

@@ -38,6 +38,43 @@ const StudentData = () => {
 
   return (
     <div className="tab2 p-md-3">
+      <div
+        className="modal fade"
+        id="showstudent"
+        tabIndex={-1}
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-mdb-dismiss="modal"
+                aria-label="Close"
+              />
+            </div>
+            <div className="modal-body">...</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-mdb-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" className="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <>
         {/* Button trigger modal */}
 
@@ -53,7 +90,7 @@ const StudentData = () => {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
-                  Issue Badges to {selStudent !== null && (selStudent.firstName+' '+selStudent.lastName)}
+                  Issue Badges to {selStudent !== null && (selStudent.firstName + ' ' + selStudent.lastName)}
                 </h5>
                 <button
                   type="button"
@@ -63,6 +100,9 @@ const StudentData = () => {
                 />
               </div>
               <div className="modal-body">
+
+                <h5>Student Name : {selStudent.firstName}</h5>
+
                 {selStudent !== null && (
                   <IssueBadges studentData={selStudent} />
                 )}
@@ -117,7 +157,7 @@ const StudentData = () => {
               <td>{student.motherName}</td>
               <td>{student.fatherName}</td>
               <td>{student.course}</td>
-              <td>{student.maleGender}</td>
+              <td>{student.gender}</td>
               <td>{student.college}</td>
               <td>{student.dob}</td>
               <td>{student.contact}</td>
@@ -135,7 +175,7 @@ const StudentData = () => {
                 </button>
               </td>
               <td>
-              <button
+                <button
                   className="btn btn-danger"
                   onClick={() => deleteStudent(student._id)}
                 >
@@ -144,6 +184,16 @@ const StudentData = () => {
               </td>
               <td>
                 <Link className="btn btn-link" to="/"> <i class="fas fa-eye"></i> View</Link>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-mdb-toggle="modal"
+                  data-mdb-target="#showstudent"
+                >
+                  View More
+                </button>
               </td>
             </tr>
           ))}

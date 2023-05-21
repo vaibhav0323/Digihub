@@ -4,25 +4,36 @@ import app_config from "../../config";
 import { TextField } from "@mui/material";
 
 const studentBadgeSchema = Yup.object().shape({
-  firstName: Yup.string().required("Required"),
-  lastName: Yup.string().required("Required"),
   id: Yup.string().required("Required"),
 });
 
 const DisplayStudentBadges = () => {
   const [studentDetails, setStudentDetails] = useState(null);
   const { apiUrl } = app_config;
-
-  const stuId = useRef(null);
+  const [stuId, setStuId] = useState('');
 
   const getStudentData = async () => {
     const response = await fetch(
-      apiUrl + "/student/getbyid/" + stuId.current.value
+      apiUrl + "/student/getbyid/" + stuId
     );
     const data = await response.json();
     console.log(data);
     setStudentDetails(data);
   };
+
+  const displayBadges = (badgeList) => {
+    return badgeList.map((badge) => (
+      <div className="col-md-4">
+        <div className="card">
+          <div className="card-body">
+            <img src={apiUrl+'/'+badge.icon} />
+            <h5 className="card-title">{badge.title}</h5>
+            </div>
+        </div>
+      </div>
+
+    ))
+  }
 
   const displayStudentDetails = () => {
     if (studentDetails !== null) {
@@ -37,6 +48,9 @@ const DisplayStudentBadges = () => {
             </div>
             <div className="col-md-6">
               <h3>Student Badges</h3>
+              <div className="row">
+                {displayBadges(studentDetails.badges)}
+              </div>
               {/* <p>Badges: {studentDetails.badges}</p> */}
             </div>
           </div>
@@ -91,16 +105,18 @@ const DisplayStudentBadges = () => {
               <div className="card bg-glass">
                 <div className="card-body px-4 py-5 px-md-5">
                   <form>
-                    {/* 2 column grid layout with text inputs for the first and last names */}
                     <div div className="row">
                       <div className="col-md-12 mb-4">
-                        <div className=" ">
+                        <div className="">
                           <TextField
                             label="Student ID"
+                            placeholder=""
                             type="text"
-                            ref={stuId}
+                            onChange={e => setStuId(e.target.value)}
+                            value={stuId}
                             className="form-control"
                             variant="outlined"
+                            color="warning"
                           />
                         </div>
                       </div>

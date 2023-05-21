@@ -83,7 +83,7 @@ const Login = () => {
               <TextField 
                 id="email" 
                 type="email" 
-                className="form-control lgg1" 
+                className="form-control log1" 
                 label="Email" 
                 variant="filled" 
                 value={loginForm.values.email}
@@ -95,9 +95,8 @@ const Login = () => {
                 label="Password" 
                 type="password" 
                 id="password" 
-                className="form-control"
+                className="form-control log1"
                 variant="filled" 
-
                 value={loginForm.values.password}
                 onChange={loginForm.handleChange}/>
               </div>
@@ -110,23 +109,22 @@ const Login = () => {
                     defaultValue=""
                     id="form2Example3"
                   />
-                  <label className="form-check-label" htmlFor="form2Example3">
+                  <label className="form-check-label text-dark" htmlFor="form2Example3">
                     Remember me
                   </label>
                 </div>
-                <a href="#!" className="text-body">
+                <a href="#!" className="fw-medium" style={{color:"blue"}}>
                   Forgot password?
                 </a>
               </div>
               <div className="text-center text-lg-start mt-4 pt-2">
                 <button
                   type="submit"
-                  className="btn btn-primary btn-lg"
-                  style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
+                  className="btn btn-lg logbtn"
                 >
                   Login
                 </button>
-                <p className="small fw-bold mt-2 pt-1 mb-0">
+                <p className="small fw-bold text-dark mt-2 pt-1 mb-0">
                   Don't have an account?{" "}
                   <a href="/main/signup" className="link-danger">
                     Register

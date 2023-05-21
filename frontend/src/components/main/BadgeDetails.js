@@ -25,7 +25,9 @@ const BadgeDetails = () => {
             return (
                 <div className="row h-auto mt-5 mb-4 me-0">
                     <div className="col-md-4 me-4  d-flex align-item-start justify-content-center ">
-                        <img src="/images/badge1.jpg" height={500}></img>
+                        {/* <img src="/images/badge1.jpg" height={500}></img>
+                         */}
+                         <img src={apiUrl+'/'+badgeData.icon} height={500}></img>
                     </div>
                     <div className="col-md-6">
                         <div className="row">
@@ -39,38 +41,7 @@ const BadgeDetails = () => {
                                 {badgeData.description}
                             </p>
                         </div>
-                        <div className="d-flex align-item-center justify-content-start mt-4">
-                            <button
-                                type="button"
-                                class="btn btn-outline-primary w-auto m-1 me-1"
-                                data-mdb-toggle="popover"
-                                title="Popover title"
-                                data-mdb-content="And here's some amazing content. It's very engaging. Right?"
-                            >
-                                Click to toggle popover
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-outline-primary w-auto m-1 me-1"
-                                data-mdb-ripple-color="dark"
-                            >
-                                Primary
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-outline-primary w-auto m-1 me-1"
-                                data-mdb-ripple-color="dark"
-                            >
-                                Primary
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-outline-primary w-auto m-1 me-1"
-                                data-mdb-ripple-color="dark"
-                            >
-                                Primary
-                            </button>
-                        </div>
+                            
                         <div className="d-flex-column align-item-center justify-content-start mt-4">
                             <h4>Skills</h4>
                             <div className="d-flex align-item-center justify-content-start mt-4">

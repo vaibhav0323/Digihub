@@ -74,7 +74,6 @@ height: auto;
   width: 90%;
   background-color: #fff5;
   color: white;
-  
   backdrop-filter: blur(7px);
   
 }
@@ -264,13 +263,24 @@ backdrop-filter: blur(20px);
 
 .studentForm
 {
-  background-color: #a5c187;}
+  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    margin-top: 3%;
+    padding: 3%;
+}
 
-.lgg1 label
+.log1 label
 {
   color: black;
 }
   
+.logbtn
+{
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  background-color: rgb(74, 50, 227); 
+  color: white;
+  font-weight: 600;
+}
 
 .myslide1{
   height: 100vh; 
@@ -292,4 +302,145 @@ backdrop-filter: blur(20px);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.mainReg
+{
+
+   background: linear-gradient( 180.6deg, rgb(191, 244, 241) 0.2%,rgb(223, 246, 245) 11.2%, rgb(127, 139, 247) 91.1% );
+}
+
+.leftPart
+{
+  text-align: center;
+    color: #fff;
+    margin-top: 4%;
+    position: relative;
+}
+
+.rightpart
+{
+  background: #f8f9fa;
+  border-top-left-radius: 10% 50%;
+  border-bottom-left-radius: 10% 50%;
+
+  
+}
+
+.rightpart form label
+{
+  color: black;
+}
+
+.imgdiv
+{
+  width: 100%;
+}
+
+.mngbdg
+{
+  background-image: linear-gradient(to bottom, #f7e8f3, #ffffff);
+}
+
+.adminProfile
+{
+  background-image: url(D:\Digihub\frontend\public\images\profile1.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.adProfileBody
+{
+background-color: transparent;
+backdrop-filter: blur(5px);
+/* border: 2px solid black; */
+border-radius: 150px 2px 150px 2px;
+box-shadow: 3px 3px 5px 3px skyblue;
+}
+
+.adForm
+{
+  position: relative;
+  overflow: hidden;
+}
+.adForm img
+{
+  width: 90%;
+  height: 90%;
+  margin-top: 5%;
+}
+
+.adUpdateForm
+{
+  position: absolute;
+  /* border: 1px solid black; */
+  top:5%;
+  left: -100%;
+  height: 90%;
+  width: 100%;
+  background-image: linear-gradient(to right, #caedff,#b5eeff); 
+  background-color:#caedff ; 
+  box-shadow: 1px 2px 5px 5px #f5f8f9;
+  transition: all 0.5s;
+}
+
+.adForm:hover .adUpdateForm
+{
+  left: 0;
+}
+
+.userProfile
+{
+  background-image: url(D:\Digihub\frontend\public\images\usrProfile3.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.usrProfileBody
+{
+  background:linear-gradient(to right, #4372b8, #f8fcfc);
+backdrop-filter: blur(5px);
+/* border: 2px solid black; */
+border-radius: 150px 2px 150px 2px;
+box-shadow: 3px 3px 5px 3px skyblue;
+
+}
+
+.usrForm
+{
+  position: relative;
+
+  overflow: hidden;
+}
+.usrForm img
+{
+  width: 90%;
+  height: 90%;
+  margin-top: 5%;
+}
+
+
+.usrUpdateForm
+{
+  position: absolute;
+  /* border: 1px solid black; */
+  top:5%;
+  left: -100%;
+  font-size: large;
+  color: black;
+  height: 90%;
+  width: 100%;
+  box-shadow: 3px 3px 5px 5px #cfe6f7;
+  background-image: linear-gradient(to right, #99b4d9, #ebf2f7);
+  background-color:#caedff ; 
+  transition: all 0.5s;
+}
+
+.usrForm:hover .usrUpdateForm
+{
+  left: 0;
 }
