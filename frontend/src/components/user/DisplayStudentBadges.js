@@ -78,19 +78,23 @@ const DisplayStudentBadges = () => {
                 className="my-5 display-5 fw-bold ls-tight"
                 style={{ color: "hsl(218, 81%, 95%)" }}
               >
-                The best offer <br />
+                View & Verify Your <br />
                 <span style={{ color: "hsl(218, 81%, 75%)" }}>
-                  for your business
+                  Digital Badges
                 </span>
               </h1>
               <p
-                className="mb-4 opacity-70"
+                className="mb-4 opacity-90"
                 style={{ color: "hsl(218, 81%, 85%)" }}
-              >
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Temporibus, expedita iusto veniam atque, magni tempora mollitia
-                dolorum consequatur nulla, neque debitis eos reprehenderit quasi
-                ab ipsum nisi dolorem modi. Quos?
+              > Welcome to the digital realm where your achievements shine bright! Here,
+                you can proudly showcase your hard-earned digital badges. These virtual
+                accolades are a testament to your skills, knowledge, and accomplishments.
+                Each badge represents a milestone in your journey, whether it's mastering 
+                a new language, completing a challenging course, or exhibiting leadership 
+                qualities. With a quick glance, you can witness the colorful array of badges
+                that symbolize your dedication and expertise. Embrace the power of these digital
+                badges and let them be a source of inspiration as you continue to explore and 
+                grow in this dynamic digital world.
               </p>
             </div>
             <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
@@ -124,7 +128,7 @@ const DisplayStudentBadges = () => {
                       <button
                         type="button"
                         onClick={getStudentData}
-                        className="btn btn-primary btn-block mb-4"
+                        className="btn btn-success btn-block mb-4"
                       >
                         See Your Badges
                       </button>
