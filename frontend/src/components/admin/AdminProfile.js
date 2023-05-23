@@ -32,9 +32,8 @@ const AdminProfile = () => {
                     <h3 style={{ marginBottom: "3%" }}> Address: </h3>
                   </div>
                 </div>
-                <div className="col-lg-5 adForm" >
-                  <img src="/images/simg2.png"></img>
-                  <div className="p-5 adUpdateForm">
+                <div className="col-lg-5 " >
+                  <div className="p-5 ">
                     <h3 className="fw-bold fs-large mb-4" style={{color:"black"}}>Update Details</h3>
                     <div className="mb-2 pb-2">
                       <TextField

@@ -21,9 +21,8 @@ const UserProfile = () => {
                   <h3 style={{ marginBottom: "3%" , color:"black"}}> Address: </h3>
                 </div>
               </div>
-              <div className="col-lg-5 usrForm">
-                <img src="/images/simg2.png" alt="imagess"></img>
-                <div className="p-5 usrUpdateForm">
+              <div className="col-lg-5 ">
+                <div className="p-5 ">
                   <h3 className="fw-bold mb-4">Update Details</h3>
                   <div className="mb-2 pb-2">
                     <TextField
