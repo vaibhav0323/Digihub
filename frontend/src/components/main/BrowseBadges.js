@@ -88,7 +88,7 @@ const BrowseBadges = () => {
     <div>
       <header>
         <div className="container py-5" >
-          <h3 style={{ color: "black" }}>Search Badges Here...</h3>
+        <h3 style={{color:"black"}}>Search Badges Here...</h3>
           <div className="input-group mb-3 ">
             <input className="form-control badgeSearch" onChange={searchBadge} />
             <span className="input-group-text" id="basic-addon1">
