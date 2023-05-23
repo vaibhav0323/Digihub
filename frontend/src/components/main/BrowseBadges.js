@@ -47,7 +47,7 @@ const BrowseBadges = () => {
             data-lgb-ripple-color="dark"
           >
             <img
-            height={300}
+              height={300}
               src={
                 badge.icon
                   ? apiUrl + "/" + badge.icon
@@ -87,8 +87,15 @@ const BrowseBadges = () => {
   return (
     <div>
       <header>
-        <div className="container py-5">
-          <input className="form-control" onChange={searchBadge} />
+        <div className="container py-5" >
+          <h3 style={{ color: "black" }}>Search Badges Here...</h3>
+          <div className="input-group mb-3 ">
+            <input className="form-control badgeSearch" onChange={searchBadge} />
+            <span className="input-group-text" id="basic-addon1">
+              <i class="fas fa-magnifying-glass "></i>
+            </span>
+          </div>
+
         </div>
       </header>
       <div className="container my-5 d-lg-flex">

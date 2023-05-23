@@ -405,3 +405,11 @@ box-shadow: 3px 3px 5px 3px skyblue;
   background-image: linear-gradient(to right, #99b4d9, #ebf2f7);
   background-color:#caedff ; 
 }
+
+.badgeSearch
+{
+  background-image: linear-gradient(to right, rgb(246, 205, 205), rgb(186, 159, 250));
+  color: black;
+  font-size: large;
+  font-weight: 500;
+}
