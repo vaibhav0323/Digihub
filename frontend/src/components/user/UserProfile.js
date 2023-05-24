@@ -1,7 +1,61 @@
-import { TextField } from '@mui/material'
-import React from 'react'
+import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import {
+  TextField,
+} from "@mui/material";
+import Swal from "sweetalert2";
+
+const SignupSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  phone: Yup.string()
+    .min(9, "Too Short!")
+    .max(11, "Too Long!")
+    .required("Required"),
+    email: Yup.string()
+    .email("Invalid email")
+    .required("Required"),
+  address: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+});
+
+
 
 const UserProfile = () => {
+  const userForm = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+    },
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
+      console.log(values);
+      const response = await fetch("http://localhost:5000/user/add", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+
+      console.log(response.status);
+      if (response.status === 200) {
+        resetForm();
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "User Updated Successfully!!",
+        });
+      }
+    },
+  });
+  
   return (
     <section className="h-100 userProfile">
     <div className="container py-5 h-100" >
@@ -41,7 +95,8 @@ const UserProfile = () => {
                       type="text"
                       className="form-control"
                       id="phone"
-                      placeholder=""
+                      value={userForm.values.name}
+                      onChange={userForm.handleChange}
                       variant="outlined"
                       color="secondary"
                     />
@@ -52,7 +107,8 @@ const UserProfile = () => {
                       type="text"
                       className="form-control"
                       id="email"
-                      placeholder=""
+                      value={userForm.values.name}
+                      onChange={userForm.handleChange}
                       variant="outlined"
                       color="secondary"
                     />
@@ -63,13 +119,14 @@ const UserProfile = () => {
                       type="text"
                       className="form-control"
                       id="address"
-                      placeholder=""
+                      value={userForm.values.name}
+                      onChange={userForm.handleChange}
                       variant="outlined"
                       color="secondary"
                     />
                   </div>
                   <button
-                    type="button"
+                    type="submit"
                     className="btn btn-danger "
                     data-mdb-ripple-color="white">
                     Update

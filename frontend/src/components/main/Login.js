@@ -21,7 +21,7 @@ const Login = () => {
       email: "",
       password: "",
     },
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, { resetForm,Submitting }) => {
       console.log(values);
       const res = await fetch("http://localhost:5000/user/authenticate", {
         method: "POST",
@@ -35,6 +35,7 @@ const Login = () => {
       console.log(res.status);
 
       if (res.status === 200) {
+        resetForm();
         Swal.fire({
           icon:'success', title :'Nice', text : 'You have succesfully Logged In'
         })

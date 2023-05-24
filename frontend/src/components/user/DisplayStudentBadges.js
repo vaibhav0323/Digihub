@@ -38,23 +38,21 @@ const DisplayStudentBadges = () => {
   const displayStudentDetails = () => {
     if (studentDetails !== null) {
       return (
-        <>
-          <div className="row">
-            <div className="col-md-6">
-              <h3>Student Details</h3>
-              <p>First Name: {studentDetails.firstName}</p>
-              <p>Last Name: {studentDetails.lastName}</p>
-              <p>Student ID: {studentDetails._id}</p>
+          <div className="row viewBadge">
+            <div className="col-md-6 ">
+              <h3 style={{color:"black"}}>Student Details</h3>
+              <p style={{color:"black"}}>First Name: {studentDetails.firstName}</p>
+              <p style={{color:"black"}}>Last Name: {studentDetails.lastName}</p>
+              <p style={{color:"black"}}>Student ID: {studentDetails._id}</p>
             </div>
             <div className="col-md-6">
-              <h3>Student Badges</h3>
+              <h3 style={{color:"black"}}>Student Badges</h3>
               <div className="row">
                 {displayBadges(studentDetails.badges)}
               </div>
               {/* <p>Badges: {studentDetails.badges}</p> */}
             </div>
           </div>
-        </>
       );
     } else {
       <h1>Student Not Found</h1>;

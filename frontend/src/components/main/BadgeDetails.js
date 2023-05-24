@@ -20,16 +20,15 @@ const BadgeDetails = () => {
         getBadgeById();
     }, []);
 
+    
     const displayBadgeData = () => {
         if (badgeData !== null) {
             return (
                 <div className="row h-auto mt-5 mb-4 me-0">
                     <div className="col-md-4 me-4  d-flex align-item-start justify-content-center ">
-                        {/* <img src="/images/badge1.jpg" height={500}></img>
-                         */}
-                         <img src={apiUrl+'/'+badgeData.icon} height={500}></img>
+                        <img src={apiUrl + '/' + badgeData.icon} height={450}></img>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 mx-5">
                         <div className="row">
                             <h1>{badgeData.title}</h1>
                             <h5>
@@ -41,30 +40,27 @@ const BadgeDetails = () => {
                                 {badgeData.description}
                             </p>
                         </div>
-                            
-                        <div className="d-flex-column align-item-center justify-content-start mt-4">
+
+                        <div className="d-flex-column align-item-center justify-content-start mt-4 ">
                             <h4>Skills</h4>
                             <div className="d-flex align-item-center justify-content-start mt-4">
-                                <span className="border border-primary fw-medium w-auto m-1 p-2">
-                                    ES6
-                                </span>
-                                <span className="border border-primary fw-medium w-auto m-1 p-2">
-                                    paython and java
-                                </span>
-                                <span className="border border-primary fw-medium w-auto m-1 p-2">
-                                    HTML and CSS
-                                </span>
-                                <span className="border border-primary fw-medium w-auto m-1 p-2">
-                                    javascript
-                                </span>
+
+                                {badgeData.skills.map((skill) => {
+                                    return (
+                                        
+                                            <span className="border border-primary fw-medium w-auto m-1  p-2">
+                                            {skill}
+                                        </span>
+                                    )
+                                })}
                             </div>
                         </div>
 
                         <div className="d-flex align-item-center justify-content-start mt-5">
                             <i class="fas fa-chalkboard fa-2x me-3"></i>
                             <p>
-                                Complete 28 hours a React Essentials course led by a Big Nerd
-                                Ranch instructor.
+                                {/* {badgeData.description} */}
+                                <h4>3 months required for the completion</h4>
                             </p>
                         </div>
                     </div>

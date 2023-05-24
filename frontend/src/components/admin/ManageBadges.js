@@ -24,7 +24,7 @@ const BadgeSchema = Yup.object().shape({
 
 const ManageBadges = () => {
   const [selImage, setSelImage] = useState(null);
-  const [selSkills, setSelSkills] = useState(new Set());
+  const [selSkills, setSelSkills] = useState([]);
 
   const skillOptions = [
     "HTML",
@@ -59,9 +59,11 @@ const ManageBadges = () => {
       createdAt: "",
       icon: "",
     },
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, {resetForm, setSubmitting }) => {
       values.icon = selImage.name;
+      values.skills = selSkills;
       console.log(values);
+      // return;
       const response = await fetch("http://localhost:5000/badge/add", {
         method: "POST",
         body: JSON.stringify(values),
@@ -73,10 +75,11 @@ const ManageBadges = () => {
 
       console.log(response.status);
       if (response.status === 200) {
+        resetForm();
         Swal.fire({
-          icon: "warning",
-          title: "warning",
-          text: "Badge Added warningfully!!",
+          icon: "success",
+          title: "Success",
+          text: "Badge Added sucessfully!!",
         });
       }
     },
@@ -188,19 +191,15 @@ const ManageBadges = () => {
 
                     <div>
                       <FormGroup>
-                        <div className="d-flex align-item-center justify-content-between">
+                        <div className="d-flex align-item-center justify-content-between" style={{overflow: 'auto', width: '100%'}}>
                           {skillOptions.map((skill) => (
                             <FormControlLabel
                               control={
-                                <Checkbox checked={selSkills.has(skill)} onChange={(e, v) => {
+                                <Checkbox checked={selSkills.includes(skill)} onChange={(e, v) => {
                                   if(v){
-                                    const temp = selSkills;
-                                    temp.add(skill);
-                                    setSelSkills(temp);
+                                    setSelSkills([...selSkills, skill]);
                                   }else{
-                                    const temp = selSkills;
-                                    temp.delete(skill);
-                                    setSelSkills(temp);
+                                    setSelSkills(selSkills.filter((s) => s !== skill));
                                   }
                                 }} />
                               }

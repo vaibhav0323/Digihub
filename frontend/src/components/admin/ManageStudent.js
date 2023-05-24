@@ -69,7 +69,7 @@ const ManageStudent = () => {
       dob: "",
       course: "",
     },
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
       values.avatar = selImage.name;
       values.gender = selGender;
       console.log(values);
@@ -85,6 +85,7 @@ const ManageStudent = () => {
 
       console.log(response.status);
       if (response.status === 200) {
+        resetForm();
         Swal.fire({
           icon: "success",
           title: "Success",
@@ -214,7 +215,7 @@ const ManageStudent = () => {
                         <div className="col-md-6">
                           <div className="mb-4">
                             <FormControl>
-                              <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+                              <FormLabel style={{color:"black"}} id="demo-row-radio-buttons-group-label">Gender</FormLabel>
                               <RadioGroup
                                 row
                                 aria-labelledby="demo-row-radio-buttons-group-label"
@@ -228,7 +229,7 @@ const ManageStudent = () => {
                           </div>
                         </div>
                         <div className="col-md-6">
-                          <label htmlFor="#uploadimage" >Uplaod Imahe</label>
+                          <label htmlFor="#uploadimage" >Uplaod Image</label>
                           <input id="uploadimage" type="file" onChange={uploadImage} />
                         </div>
                       </div>

@@ -100,9 +100,13 @@ const StudentData = () => {
                 />
               </div>
               <div className="modal-body">
-
-                <h5>Student Name : {selStudent.firstName}</h5>
-
+                {
+                  selStudent && (
+                    <>
+                      
+                    </>
+                  )
+                }
                 {selStudent !== null && (
                   <IssueBadges studentData={selStudent} />
                 )}

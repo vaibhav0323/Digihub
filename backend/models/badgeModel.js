@@ -4,7 +4,7 @@ const myschema = new Schema({
     title : String,
     course : String,
     description : String,
-    skills: Array,
+    skills: {type : Array, default : []},
     icon: String,
     createdAt: Date
 });
