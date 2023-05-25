@@ -416,17 +416,28 @@ box-shadow: 3px 3px 5px 3px skyblue;
 
 .sideNav
 {
-  background-color:grey;
+  background-color: #3444b5;
+  /* background-color: white; */
 }
 
+.sideNav hr
+{
+  color: white;
+  font-weight: bold;
+}
 .sLink
 {
-  color: black;
+  color: white;
   font-size: large;
-  font-weight: 600;
-  border: 2px solid black;
+  font-weight: bold;
   margin-top: 5px;
-  border-radius:10px 0px 10px 0px;
+}
+
+.sLink:hover
+{
+  color: yellow;
+  font-size: large;
+  font-weight: bold;
 }
 
 .mainBodyAdmin
@@ -439,7 +450,7 @@ box-shadow: 3px 3px 5px 3px skyblue;
   
   height: 100%;
   display: flex-column;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;  
 }
 
@@ -471,3 +482,43 @@ box-shadow: 3px 3px 5px 3px skyblue;
 {
   background-color: rgb(210, 235, 159);
 }
+
+.des2card
+{
+  border-radius: 20px;
+  background-color: white;
+  /* transition: all 0.3s; */
+}
+
+
+
+.des2card:hover
+{
+  
+
+  background-color: #136efd;
+  border:2px solid  #136efd;
+  color: white;
+
+}
+
+/* .homeBody
+{
+  background-image: linear-gradient(to right, #bd88f3, #f2d2ed);
+  height: auto;
+  font-family: 'DynaPuff', cursive;
+font-family: 'Playfair Display', serif;
+font-family: 'Roboto', sans-serif;
+} */
+
+
+.mainDivServices
+{
+  background-image:url(D:\Digihub\frontend\public\images\blogbg.jpeg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+}
+
+

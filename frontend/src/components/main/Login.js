@@ -43,7 +43,7 @@ const Login = () => {
         const data = await res.json();
         if (data.role === "user") {
           sessionStorage.setItem("user", JSON.stringify(data));
-          navigate("/user/profile");
+          navigate("/user/home");
         } else {
           sessionStorage.setItem("admin", JSON.stringify(data));
           navigate("/admin/BadgeData");

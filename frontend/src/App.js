@@ -2,12 +2,11 @@
 import "./App.css";
 import {
   BrowserRouter,
-  NavLink,
   Navigate,
   Route,
   Routes,
 } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 
 import Home from "./components/main/Home";
 import Login from "./components/main/Login";
@@ -18,9 +17,7 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminProfile from "./components/admin/AdminProfile";
 import ManageStudent from "./components/admin/ManageStudent";
 import ManageBadges from "./components/admin/ManageBadges";
-import IssueBadges from "./components/admin/IssueBadges";
-import UserProfile from "./components/user/UserProfile";
-import NewBadge from "./components/user/NewBadge";
+// import IssueBadges from "./components/admin/IssueBadges";
 import Admin from "./components/admin";
 import User from "./components/user";
 import Main from "./components/main";
@@ -38,34 +35,6 @@ function App() {
   return (
     <BrowserRouter>
       <Toaster position="top-right" />
-      <nav className="navbar navbar-expand-lg navbar-light bg-light ">
-        <div className="container-fluid">
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <NavLink className="nav-link active" to="/App">
-                  Home page
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link active" to="/Admin">
-                  Admin
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link active" to="/Main">
-                  Main
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link active" to="/User">
-                  User
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
       <AdminProvider>
         <UserProvider>
           <Routes>
@@ -97,12 +66,9 @@ function App() {
             </Route>
 
             <Route path="user" element={<User />}>
-              <Route path="userProfile" element={<UserProfile />} />
-              <Route path="newBadge" element={<NewBadge />} />
-              <Route
-                path="displayStudentBadges"
-                element={<DisplayStudentBadges />}
-              />
+              {/* <Route path="services" element={<Services />} /> */}
+              <Route path="home" element={<Home/>} />
+              <Route path="displayStudentBadges" element={<DisplayStudentBadges />}/>
             </Route>
           </Routes>
           <Footer />

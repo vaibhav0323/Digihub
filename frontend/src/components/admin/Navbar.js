@@ -41,7 +41,7 @@ const Navbar = () => {
       {/* Collapsible wrapper */}
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         {/* Navbar brand */}
-        <NavLink className="navbar-brand mt-2 mt-lg-0" to="/admin">
+        <NavLink className="navbar-brand mt-2 mt-lg-0" to="/main/home">
         
         <img
         src='/images/sign2.png' height={40} alt="Logo"

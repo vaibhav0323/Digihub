@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import Swal from "sweetalert2";
 
-const SignupSchema = Yup.object().shape({
+const adminSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
@@ -27,17 +27,20 @@ const SignupSchema = Yup.object().shape({
 
 
 const AdminProfile = () => {
+
+  const [currentAdmin, setCurrentAdmin] = useState(JSON.parse(sessionStorage.getItem("admin")));
+
   const adminForm = useFormik({
-    initialValues: {
+    initialValues: currentAdmin !== null ? currentAdmin : {
       name: "",
       email: "",
       phone: "",
-      address: "",
+      // address: "",
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       console.log(values);
-      const response = await fetch("http://localhost:5000/user/add", {
-        method: "POST",
+      const response = await fetch("http://localhost:5000/user/update/"+currentAdmin._id, {
+        method: "PUT",
         body: JSON.stringify(values),
         headers: {
           "content-type": "application/json",
@@ -69,10 +72,9 @@ const AdminProfile = () => {
                   <div className="p-5" style={{ height: "100%" }}>
                     <h1 className="fs-large mb-5" style={{ color: "black" }}>
                       Admin Details</h1>
-                    <h3 style={{ marginBottom: "3%" }}> Name : </h3>
-                    <h3 style={{ marginBottom: "3%" }}> Contact: </h3>
-                    <h3 style={{ marginBottom: "3%" }}> Email : </h3>
-                    <h3 style={{ marginBottom: "3%" }}> Address: </h3>
+                    <h3 style={{ marginBottom: "3%",color:"black" }}> Name : &nbsp;&nbsp;&nbsp; {currentAdmin.name} </h3>
+                    <h3 style={{ marginBottom: "3%",color:"black" }}> Contact: &nbsp;{currentAdmin.phone} </h3>
+                    <h3 style={{ marginBottom: "3%",color:"black" }}> Email : &nbsp;&nbsp;&nbsp;{currentAdmin.email} </h3>
                   </div>
                 </div>
                 <div className="col-lg-5 " >
@@ -115,7 +117,7 @@ const AdminProfile = () => {
                         color="secondary"
                       />
                     </div>
-                    <div className="mb-2 pb-2">
+                    {/* <div className="mb-2 pb-2">
                       <TextField
                         label="Address"
                         type="text"
@@ -126,7 +128,7 @@ const AdminProfile = () => {
                         variant="outlined"
                         color="secondary"
                       />
-                    </div>
+                    </div> */}
                     <button
                       type="submit"
                       className="btn btn-danger "

@@ -49,21 +49,17 @@ const Navbar = () => {
               </NavLink>
               {/* Left links */}
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <NavLink className="nav-link active" to="/user">
+              <li className="nav-item">
+                  <NavLink className="nav-link active" to="/user/home">
                     Home
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link active" to="/user/userProfile">
-                    User profile
+                  <NavLink className="nav-link active" to="/main/browseBadges">
+                    Badges
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link active" to="/user/newBadge">
-                    New Badges
-                  </NavLink>
-                </li>
+                
                 <li className="nav-item">
                   <NavLink
                     className="nav-link active"
@@ -72,6 +68,8 @@ const Navbar = () => {
                     Display Student Badges
                   </NavLink>
                 </li>
+
+                
               </ul>
               {/* Left links */}
               {showLogout()}

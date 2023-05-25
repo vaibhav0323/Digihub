@@ -11,41 +11,61 @@ const AdminDashboard = () => {
             id="sidebar"
             role="navigation"
           >
-            <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3 ">
+            <h3 className='mt-md-3 mx-md-3 fw-bold text-start' style={{fontFamily:"'Playfair Display', serif", color:"white"}}>Digihub</h3>
+            <h5 className='mx-md-2 text-center' style={{fontFamily:"'Playfair Display', serif",color:"white"}}>The power of proof...</h5>
+            <ul className="nav flex-column sticky-top pl-0 pt-2 mt-3 ">
+             
               <li className="nav-item">
                 <NavLink className="nav-link sLink" to="/admin/adminProfile">
+                <i class="fas fa-bars-progress me-2"></i>
                   Admin profile
                 </NavLink>
               </li>
 
+              <hr/>
+
               <li className="nav-item">
                 <NavLink className="nav-link sLink" to="/admin/manageStudent">
+                <i class="fas fa-house-chimney-user me-2"></i>
                   Manage Students
                 </NavLink>
               </li>
+
+              <hr/>
+
               <li className="nav-item">
                 <NavLink className="nav-link sLink" to="/admin/manageBadges">
+                <i class="fas fa-building-columns me-2"></i>
                   Manage Badges
                 </NavLink>
               </li>
+
+              <hr/>
+
               <li className="nav-item">
                 <NavLink className="nav-link sLink" to="/admin/badgeData">
+                <i class="fas fa-database me-2"></i>
                   Badge Data
                 </NavLink>
               </li>
 
+              <hr/>
+
               <li className="nav-item">
                 <NavLink className="nav-link sLink" to="/admin/studentData">
+                <i class="fas fa-table me-2"></i>
                   Student Data
                 </NavLink>
               </li>
+
+              <hr/>
             </ul>
           </div>
           {/*/col*/}
           <div className="col main pt-5 mt-3">
-            <h1 className="display-4 fw-bold d-none d-sm-block">Digihub AdminDashboard</h1>
+            <h1 className="display-4 fw-bold d-none d-sm-block">Admin Dashboard</h1>
             <h3 className="lead d-none d-sm-block fs-large fw-normal">
-              Unlock the potential of your organization.
+              Unlock the potential of your organization
             </h3>
 
             <div className="row mb-3">

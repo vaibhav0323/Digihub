@@ -5,7 +5,6 @@ import Navbar from './Navbar'
 const  User = () => {
   return (
     <div>
-      <h1>This is a user index page.</h1>
       <Navbar/>
       <Outlet />
     </div>

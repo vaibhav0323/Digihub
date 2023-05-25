@@ -10,7 +10,7 @@ import { Pagination, Navigation } from "swiper";
 
 const Home = () => {
   return (
-    <div className='w-100 homeBody'>
+    <div>
       <div><Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -45,9 +45,7 @@ const Home = () => {
         <h2 className='bg-light text-dark text-center fw-bold fs-larger'> Our Services</h2>
       </div>
       <hr></hr>
-      
-      
-      <div className='container mb-md-3 '>
+      <div className='container mb-md-3'>
         <div className="row d-flex align-item-center justify-content-around">
 
          {/* 1st card */}
@@ -91,8 +89,8 @@ const Home = () => {
 
         </div>
       </div>
-      </div>
-    
+      
+    </div>
   )
 }
 
